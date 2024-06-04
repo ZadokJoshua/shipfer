@@ -3,6 +3,8 @@
     x:Class="Shipfer.Views.AuthPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodel="clr-namespace:Shipfer.ViewModels"
+    x:DataType="viewmodel:AuthViewModel"
     Shell.NavBarIsVisible="False"
     Shell.PresentationMode="Modal"
     xmlns:material="clr-namespace:UraniumUI.Material.Controls;assembly=UraniumUI.Material"
@@ -45,10 +47,10 @@
                     CornerRadius="16"
                     Text="Sign up" />
                 <Button
-                    BackgroundColor="#FBFCFD"
+                    BackgroundColor="{AppThemeBinding Dark={DynamicResource SecondaryColour}, Light={DynamicResource TertiaryColour}}"
                     CornerRadius="16"
-                    TextColor="#464344"
-                    Text="Guest mode" />
+                    TextColor="{AppThemeBinding Dark={DynamicResource TertiaryColour}, Light={DynamicResource SecondaryColour}}"
+                    Text="Guest mode"  Command="{x:Binding GoToMainPageCommand}"/>
             </VerticalStackLayout>
         </VerticalStackLayout>
     </ScrollView>

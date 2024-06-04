@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
+using Shipfer.ViewModels;
+using Shipfer.Views;
 using UraniumUI;
 
 namespace Shipfer;
@@ -18,6 +20,12 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 fonts.AddFontAwesomeIconFonts();
             });
+
+        builder.Services.AddSingleton<AuthViewModel>();
+        builder.Services.AddSingleton<MainViewModel>();
+
+        builder.Services.AddSingleton<AuthPage>();
+        builder.Services.AddSingleton<MainPage>();
 
 #if DEBUG
 		builder.Logging.AddDebug();

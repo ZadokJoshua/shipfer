@@ -1,9 +1,13 @@
-﻿namespace Shipfer.Views;
+﻿using Shipfer.ViewModels;
+
+namespace Shipfer.Views;
 
 public partial class MainPage : ContentPage
 {
-    public MainPage()
+    public MainPage(MainViewModel viewModel)
     {
         InitializeComponent();
+
+        BindingContext = viewModel;
     }
 }

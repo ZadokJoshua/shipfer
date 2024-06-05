@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Shipfer.Views.ChatPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fa="clr-namespace:UraniumUI.Icons.FontAwesome;assembly=UraniumUI.Icons.FontAwesome"
+    xmlns:material="clr-namespace:UraniumUI.Material.Controls;assembly=UraniumUI.Material"
+    xmlns:viewmodel="clr-namespace:Shipfer.ViewModels"
+    x:DataType="viewmodel:ChatViewModel"
+    Title="Chat with Shipfer AI"
+    Shell.NavBarIsVisible="False"
+    Shell.PresentationMode="Modal">
+
+    <ScrollView HorizontalScrollBarVisibility="Never">
+        <Grid Margin="10" RowDefinitions="*,Auto">
+            <!--  Main Content Area  -->
+            <VerticalStackLayout
+        HorizontalOptions="Center"
+        Spacing="8"
+        VerticalOptions="Center" IsVisible="{x:Binding IsMessagesEmpty}">
+                <Image HeightRequest="100" Source="shipfer.png" />
+                <Label
+            FontAttributes="Bold"
+            FontSize="Title"
+            HorizontalOptions="Center"
+            Text="Welcome to Shipfer AI!"
+            TextColor="#333" />
+                <Label
+            FontSize="16"
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center"
+            Text="How can we assist you today? Choose an option below or type your query."
+            TextColor="#666" />
+                <Button
+            Margin="0,5"
+            BackgroundColor="{DynamicResource PrimaryColour}"
+            CornerRadius="8"
+            HeightRequest="50"
+            Text="Create shipment"
+            TextColor="{DynamicResource SecondaryColour}" />
+                <Button
+            Margin="0,5"
+            BackgroundColor="{DynamicResource PrimaryColour}"
+            CornerRadius="8"
+            HeightRequest="50"
+            Text="Check inventory"
+            TextColor="{DynamicResource SecondaryColour}" />
+                <Button
+            Margin="0,5"
+            BackgroundColor="{DynamicResource PrimaryColour}"
+            CornerRadius="8"
+            HeightRequest="50"
+            Text="Confirm print label"
+            TextColor="{DynamicResource SecondaryColour}" />
+            </VerticalStackLayout>
+
+            <ScrollView IsVisible="{x:Binding IsMessagesEmpty}">
+                
+            </ScrollView>
+
+            <!--  Chat Input Area  -->
+            <VerticalStackLayout Grid.Row="1" Margin="0,10,0,0">
+                <Grid Padding="0" ColumnDefinitions="*,Auto,Auto" ColumnSpacing="4">
+                    <material:TextField MaximumHeightRequest="100"
+                Margin="0,0,5,0"
+                AccentColor="{DynamicResource PrimaryColour}"
+                BorderColor="{DynamicResource PrimaryColour}"
+                HeightRequest="50"
+                VerticalOptions="Center" />
+                    <!--<ImageButton
+                Grid.Column="1"
+                BackgroundColor="{DynamicResource PrimaryColour}"
+                HeightRequest="50"
+                HorizontalOptions="Center"
+                Source="microphone.svg"
+                Padding="50"
+                CornerRadius="20"
+                VerticalOptions="Center"
+                WidthRequest="50" />-->
+                    <Button
+                Grid.Column="2"
+                BackgroundColor="{DynamicResource PrimaryColour}"
+                CornerRadius="20"
+                        HeightRequest="50"
+                        TextColor="{x:DynamicResource TertiaryColour}"
+                        Text="Send"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"/>
+                </Grid>
+            </VerticalStackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>

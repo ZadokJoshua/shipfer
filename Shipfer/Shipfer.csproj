@@ -40,14 +40,13 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" Color="#40B3B3" TintColor="#000000" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" BaseSize="128,114.24" />
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" BaseSize="128,128" Colour="#100F10" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
-		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
 
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
@@ -57,7 +56,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\bot.svg" />
+	  <None Remove="Resources\Images\chatbot.png" />
+	  <None Remove="Resources\Images\home.svg" />
+	  <None Remove="Resources\Images\microphone.svg" />
+	  <None Remove="Resources\Images\send.svg" />
 	  <None Remove="Resources\Images\shipfer.png" />
+	  <None Remove="Resources\Images\store.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -70,12 +75,17 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Models\" />
 	  <Folder Include="Services\" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <MauiXaml Update="Views\AuthPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ChatPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ProductsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

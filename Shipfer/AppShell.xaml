@@ -5,12 +5,31 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:Shipfer.Views"
     Title="Shipfer"
-    Shell.FlyoutBehavior="Disabled">
+    Shell.TabBarForegroundColor="{DynamicResource PrimaryColour}"
+    Shell.TabBarTitleColor="{DynamicResource PrimaryColour}"
+    Shell.TabBarUnselectedColor="#CCEBEB"
+    Shell.TabBarBackgroundColor="{DynamicResource TertiaryColour}">
 
-    <ShellContent Title="Auth" ContentTemplate="{DataTemplate views:AuthPage}" Route="AuthPage" />
+    <!--<ShellContent
+        Title="Auth"
+        ContentTemplate="{DataTemplate views:AuthPage}" 
+        Route="AuthPage" />-->
+    
     <TabBar>
-        <Tab>
-            <ShellContent Title="Home" ContentTemplate="{DataTemplate views:MainPage}" Route="MainPage" />
-        </Tab>
+        <ShellContent
+            Title="Home"
+            ContentTemplate="{DataTemplate views:MainPage}"
+            Icon="home.png"
+            Route="MainPage" />
+        <ShellContent
+            Title="Copilot"
+            ContentTemplate="{DataTemplate views:ChatPage}"
+            Icon="chatbot.png"
+            Route="ChatPage" />
+        <ShellContent
+            Title="Products"
+            ContentTemplate="{DataTemplate views:ProductsPage}"
+            Icon="store.png"
+            Route="ProductsPage" />
     </TabBar>
 </Shell>

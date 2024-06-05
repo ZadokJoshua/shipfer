@@ -9,62 +9,65 @@
     x:DataType="viewmodel:MainViewModel"
     Shell.NavBarIsVisible="False"
     Shell.PresentationMode="Modal">
-    <ScrollView Margin="10">
+
+    <ScrollView Margin="10" VerticalScrollBarVisibility="Never">
         <VerticalStackLayout Spacing="25">
+            <!-- User Information -->
             <VerticalStackLayout>
-                <Label FontSize="24" Text="Hello, Demo User!" />
-                <Label FontSize="14" Text="Your Location is 123 Main Street Apartment 4B, New York, NY 10001, United States" LineBreakMode="WordWrap" MaxLines="2"/>
+                <Label FontSize="24" Text="Hello, Demo User!" FontAttributes="Bold" TextColor="#333" />
+                <Label FontSize="14" Text="📌 Your Location: 123 Main Street Apartment 4B, New York, NY 10001, United States" LineBreakMode="WordWrap" MaxLines="2" TextColor="#666"/>
+                <Label FontSize="14" Text="🏢 Business name: Max Distribution" LineBreakMode="WordWrap" MaxLines="2" TextColor="#666"/>
             </VerticalStackLayout>
-            <StackLayout>
-                <Frame BackgroundColor="#e0f7fa" CornerRadius="10" Padding="10">
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="20">
-                        <StackLayout HorizontalOptions="Center">
-                            <Label Text="In Transit" FontSize="18" FontAttributes="Bold" TextColor="#00796b" />
-                            <Label Text="5" FontSize="24" FontAttributes="Bold" TextColor="#00796b" HorizontalOptions="Center" />
-                        </StackLayout>
-                        <StackLayout HorizontalOptions="Center">
-                            <Label Text="Delivered" FontSize="18" FontAttributes="Bold" TextColor="#00796b" />
-                            <Label Text="10" FontSize="24" FontAttributes="Bold" TextColor="#00796b" HorizontalOptions="Center" />
-                        </StackLayout>
-                        <StackLayout HorizontalOptions="Center">
-                            <Label Text="Pending" FontSize="18" FontAttributes="Bold" TextColor="#00796b" />
-                            <Label Text="3" FontSize="24" FontAttributes="Bold" TextColor="#00796b" HorizontalOptions="Center" />
-                        </StackLayout>
-                    </StackLayout>
-                </Frame>
-            </StackLayout>
+
+            <!-- Shipment Summary -->
+            <Frame BackgroundColor="#e0f7fa" CornerRadius="10" Padding="10">
+                <HorizontalStackLayout HorizontalOptions="CenterAndExpand" Spacing="20">
+                    <VerticalStackLayout HorizontalOptions="Center">
+                        <Label Text="In Transit" FontSize="18" FontAttributes="Bold" TextColor="#00796b" HorizontalOptions="Center" />
+                        <Label Text="5" FontSize="24" FontAttributes="Bold" TextColor="#00796b" HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                    <VerticalStackLayout HorizontalOptions="Center">
+                        <Label Text="Delivered" FontSize="18" FontAttributes="Bold" TextColor="#00796b" HorizontalOptions="Center" />
+                        <Label Text="10" FontSize="24" FontAttributes="Bold" TextColor="#00796b" HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                    <VerticalStackLayout HorizontalOptions="Center">
+                        <Label Text="Pending" FontSize="18" FontAttributes="Bold" TextColor="#00796b" HorizontalOptions="Center" />
+                        <Label Text="3" FontSize="24" FontAttributes="Bold" TextColor="#00796b" HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+            </Frame>
+
+            <!-- Quick Actions -->
             <VerticalStackLayout Spacing="10">
-                <Button Text="Chat with Shipfer" Background="{DynamicResource PrimaryColour}" 
-                    CornerRadius="20"
-                    Padding="10" TextColor="{DynamicResource SecondaryColour}"/>
-                <Grid ColumnDefinitions="*,*" ColumnSpacing="4"> 
-                    <Button Text="New Shipment" BackgroundColor="#1abc9c" TextColor="White" CornerRadius="20" Padding="10" Grid.Column="0"/>
-                    <Button Text="Schedule Pickup" BackgroundColor="#34495e" TextColor="White" CornerRadius="20" Padding="10" Grid.Column="1"/>
+                <Button Text="Chat with Shipfer AI" 
+                        CornerRadius="8" ImageSource="chatbot.png"
+                        ContentLayout="Left, 20" HeightRequest="60"
+                        BackgroundColor="{DynamicResource PrimaryColour}" 
+                        TextColor="{DynamicResource SecondaryColour}" StyleClass="ElevatedButton"/>
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="4">
+                    <Button StyleClass="ElevatedButton" Text="New Shipment" HeightRequest="60" BackgroundColor="#1abc9c" TextColor="White" CornerRadius="8" Padding="10" Grid.Column="0"/>
+                    <Button Text="Schedule Pickup" BackgroundColor="#34495e" TextColor="White" HeightRequest="60" CornerRadius="8" Padding="10" Grid.Column="1" StyleClass="ElevatedButton"/>
                 </Grid>
             </VerticalStackLayout>
-            <VerticalStackLayout Spacing="4">
-                <Label FontSize="Title" Text="Current Shipments"/>
+
+            <!-- Current Shipments -->
+            <VerticalStackLayout Spacing="10">
+                <Label FontSize="20" Text="Current Shipments" FontAttributes="Bold" TextColor="#333"/>
                 <BoxView HeightRequest="2" BackgroundColor="#ccc" HorizontalOptions="Fill" Margin="0,5,0,10" />
-                <StackLayout>
-                    <Label Text="No shipments to display."
-                   FontSize="14"
-                   TextColor="#666"
-                   HorizontalOptions="Center"
-                   Margin="20"/>
-                    <!-- You can add a ListView or CollectionView here to display shipments -->
-                </StackLayout>
+                <Frame BackgroundColor="#ffffff" CornerRadius="10" Padding="10" HasShadow="True">
+                    <Label Text="No shipments to display." FontSize="14" TextColor="#666" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Margin="20"/>
+                    <!-- Add a ListView or CollectionView to display shipments here -->
+                </Frame>
             </VerticalStackLayout>
-            <VerticalStackLayout Spacing="4">
-                <Label FontSize="Title" Text="Past Shipments"/>
+
+            <!-- Past Shipments -->
+            <VerticalStackLayout Spacing="10">
+                <Label FontSize="20" Text="Past Shipments" FontAttributes="Bold" TextColor="#333"/>
                 <BoxView HeightRequest="2" BackgroundColor="#ccc" HorizontalOptions="Fill" Margin="0,5,0,10" />
-                <StackLayout>
-                    <Label Text="No shipments to display."
-       FontSize="14"
-       TextColor="#666"
-       HorizontalOptions="Center"
-       Margin="20"/>
-                    <!-- You can add a ListView or CollectionView here to display shipments -->
-                </StackLayout>
+                <Frame BackgroundColor="#ffffff" CornerRadius="10" Padding="10" HasShadow="True">
+                    <Label Text="No shipments to display." FontSize="14" TextColor="#666" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Margin="20"/>
+                    <!-- Add a ListView or CollectionView to display past shipments here -->
+                </Frame>
             </VerticalStackLayout>
         </VerticalStackLayout>
     </ScrollView>

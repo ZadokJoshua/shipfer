@@ -9,11 +9,9 @@
     Shell.PresentationMode="Modal"
     xmlns:material="clr-namespace:UraniumUI.Material.Controls;assembly=UraniumUI.Material"
     xmlns:fa="clr-namespace:UraniumUI.Icons.FontAwesome;assembly=UraniumUI.Icons.FontAwesome">
-    <ScrollView Margin="10">
+    <ScrollView Margin="20" VerticalOptions="Center" HorizontalOptions="Center">
         <VerticalStackLayout
-            HorizontalOptions="Center"
-            Spacing="25"
-            VerticalOptions="Center">
+            Spacing="25">
             <VerticalStackLayout Spacing="8">
                 <Image
                     HeightRequest="100"
@@ -36,12 +34,16 @@
                     HorizontalOptions="Center"
                     Text="Welcome to Shipfer!" />
                 <VerticalStackLayout>
-                    <material:TextField Title="User Name" Icon="{FontImageSource FontFamily=FASolid, Glyph={x:Static fa:Solid.User}}" AccentColor="#40B3B3"/>
+                    <material:TextField Title="User Name" Icon="{FontImageSource FontFamily=FASolid, Glyph={x:Static fa:Solid.User}}" AccentColor="#40B3B3" />
                 </VerticalStackLayout>
                 <VerticalStackLayout>
-                    <material:TextField IsPassword="True" Title="Password" Icon="{FontImageSource FontFamily=FASolid, Glyph={x:Static fa:Solid.UserSecret}}" AccentColor="#40B3B3"/>
+                    <material:TextField IsPassword="True" Title="Password" Icon="{FontImageSource FontFamily=FASolid, Glyph={x:Static fa:Solid.UserSecret}}" AccentColor="#40B3B3">
+                        <material:TextField.Attachments>
+                            <material:TextFieldPasswordShowHideAttachment />
+                        </material:TextField.Attachments>
+                    </material:TextField>
                 </VerticalStackLayout>
-                <Label FontSize="Caption" Text="Used Shipter before? Login here" HorizontalOptions="Center"/>
+                <Label FontSize="Caption" Text="Used Shipfer before? Login here" HorizontalOptions="Center"/>
                 <Button
                     BackgroundColor="#40B3B3"
                     CornerRadius="16"

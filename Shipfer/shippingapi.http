@@ -1,0 +1,159 @@
+# For more info on HTTP files go to https://aka.ms/vs/httpfile
+###
+
+# curl -i -X POST
+#  -u <username>:<password>
+#  https://api-sandbox.sendpro360.pitneybowes.com/auth/api/v1/token
+#  -H 'Content-Type: application/json'
+POST https://api-sandbox.sendpro360.pitneybowes.com/auth/api/v1/token
+Authorization: Basic MG9hMjNtcjN6bWo4T01wM00waDg6b1RyQl9USHpkWjNEbWEtUFlPVnI4Vk9SWXNtWnhyUU1tSXE4Sm9HRGhqbHN1WUphMDJBZ1pqekJfY2RtS0piLQ==
+Content-Type: application/json
+
+###
+
+# curl -i -X GET
+#  https://api-sandbox.sendpro360.pitneybowes.com/shipping/api/v1/carriers
+#  -H 'Authorization: Bearer <YOUR_TOKEN_HERE>'
+GET https://api-sandbox.sendpro360.pitneybowes.com/shipping/api/v1/carriers
+Authorization: Bearer eyJraWQiOiJaS3dDcjJKUjN6a2UxVnZkd3lCSVJILVUzNTB6MnlURVAxa0dCUTZnQkVnIiwiYWxnIjoiUlMyNTYifQ.eyJ2ZXIiOjEsImp0aSI6IkFULkVZM0lLdE9ZYWFhZVQtRlpUTTJaUHEtN21QRGdVSVAyYU5NdU0tWWRXNFEiLCJpc3MiOiJodHRwczovL3BpdG5leWJvd2VzLm9rdGFwcmV2aWV3LmNvbS9vYXV0aDIvYXVzMWxzNXpmZWJrOXZ6bWUwaDgiLCJhdWQiOiJodHRwczovL2FwaS5waXRuZXlib3dlcy5jb20iLCJzdWIiOiJBUEktU1AzNjAtMURnazRiUTJQYnctUFBEIiwiaWF0IjoxNzE3NjIyNzI3LCJleHAiOjE3MTc2MzcxMjcsImNpZCI6IjBvYTIzbXIzem1qOE9NcDNNMGg4Iiwic2NwIjpbInBzYXBpIl0sInN2Y1ZlciI6IjMuMCIsImNsYWltX3BzYXBpIjp7ImVudElEIjoiU3VtbWl0IiwidWlkIjoiMG9hMjNtcjN6bWo4T01wM00waDgiLCJzdWJJRCI6InN1bW1pdF9wcm9qZWN0IiwiY250cnkiOiJVUyIsInBsYW5zIjpbIlNFTkRJTkdfU0hJUEFDQ0VMX0VOVEVSUFJJU0UiLCJTSElQQUNDRUxfRU5URVJQUklTRV9QTEFURk9STSIsIkNPTkZJR1VSQUJMRV9VSV9QTEFOIiwiUE9TVEFMX0FQUF9QTEFOX0VDT01NRVJDRSIsIkFOQUxZVElDUzM2MF9TSElQUElOR19QTEFOIiwiQU5BTFlUSUNTMzYwX0FEVkFEVklTT1JfUExBTiIsIkFQSV9NQU5BR0UiLCJBUElfQkFTSUMiLCJBUElfU0VORElOR19CQVNJQyJdfX0.vGzieIFH9W2Hyiy7nk5waefhIQKrBQC8GB-FYPRuiA8yvkd3yBLqPwVQ2Gpy1pIjkcJCxRgvChbHHiHqxnF_fTL9ewPNSQsm9Y0udmQ5n-1bbbCyJMemRr61GXGrOzaWow_WvGUnKI-zJH-YIWv7AwqEgWTlek59GVdaZ_oumIt-EWdoXa8NZk8z0sxuuavJUAJ2CU0Iztv4pABvEgCmzeorPGgg92WjIR91kIjPa8e3eorcy5WUpVXgt9KtGsnOKZvjFcG290tdNz0PnivmYqQ6Tl6o58iBrN4OR7AHV2Q0-gKdD_kMkir2DV9qRGx_ZfOswlc3PREM7NbWFf_38w
+
+<> 2024-06-05T172656.200.json
+
+###
+
+# curl -i -X GET
+#  'https://api-sandbox.sendpro360.pitneybowes.com/shipping/api/v1/services?carrier=string&originCountryCode=string&destinationCountryCode=string'
+#  -H 'Authorization: Bearer <YOUR_TOKEN_HERE>'
+GET https://api-sandbox.sendpro360.pitneybowes.com/shipping/api/v1/services?carrier=FEDEX
+Authorization: Bearer eyJraWQiOiJaS3dDcjJKUjN6a2UxVnZkd3lCSVJILVUzNTB6MnlURVAxa0dCUTZnQkVnIiwiYWxnIjoiUlMyNTYifQ.eyJ2ZXIiOjEsImp0aSI6IkFULkVZM0lLdE9ZYWFhZVQtRlpUTTJaUHEtN21QRGdVSVAyYU5NdU0tWWRXNFEiLCJpc3MiOiJodHRwczovL3BpdG5leWJvd2VzLm9rdGFwcmV2aWV3LmNvbS9vYXV0aDIvYXVzMWxzNXpmZWJrOXZ6bWUwaDgiLCJhdWQiOiJodHRwczovL2FwaS5waXRuZXlib3dlcy5jb20iLCJzdWIiOiJBUEktU1AzNjAtMURnazRiUTJQYnctUFBEIiwiaWF0IjoxNzE3NjIyNzI3LCJleHAiOjE3MTc2MzcxMjcsImNpZCI6IjBvYTIzbXIzem1qOE9NcDNNMGg4Iiwic2NwIjpbInBzYXBpIl0sInN2Y1ZlciI6IjMuMCIsImNsYWltX3BzYXBpIjp7ImVudElEIjoiU3VtbWl0IiwidWlkIjoiMG9hMjNtcjN6bWo4T01wM00waDgiLCJzdWJJRCI6InN1bW1pdF9wcm9qZWN0IiwiY250cnkiOiJVUyIsInBsYW5zIjpbIlNFTkRJTkdfU0hJUEFDQ0VMX0VOVEVSUFJJU0UiLCJTSElQQUNDRUxfRU5URVJQUklTRV9QTEFURk9STSIsIkNPTkZJR1VSQUJMRV9VSV9QTEFOIiwiUE9TVEFMX0FQUF9QTEFOX0VDT01NRVJDRSIsIkFOQUxZVElDUzM2MF9TSElQUElOR19QTEFOIiwiQU5BTFlUSUNTMzYwX0FEVkFEVklTT1JfUExBTiIsIkFQSV9NQU5BR0UiLCJBUElfQkFTSUMiLCJBUElfU0VORElOR19CQVNJQyJdfX0.vGzieIFH9W2Hyiy7nk5waefhIQKrBQC8GB-FYPRuiA8yvkd3yBLqPwVQ2Gpy1pIjkcJCxRgvChbHHiHqxnF_fTL9ewPNSQsm9Y0udmQ5n-1bbbCyJMemRr61GXGrOzaWow_WvGUnKI-zJH-YIWv7AwqEgWTlek59GVdaZ_oumIt-EWdoXa8NZk8z0sxuuavJUAJ2CU0Iztv4pABvEgCmzeorPGgg92WjIR91kIjPa8e3eorcy5WUpVXgt9KtGsnOKZvjFcG290tdNz0PnivmYqQ6Tl6o58iBrN4OR7AHV2Q0-gKdD_kMkir2DV9qRGx_ZfOswlc3PREM7NbWFf_38w
+
+<> 2024-06-05T173138.200.json
+<> 2024-06-05T173024.400.json
+<> 2024-06-05T172955.400.json
+<> 2024-06-05T172945.400.json
+<> 2024-06-05T172923.400.json
+<> 2024-06-05T172915.400.json
+<> 2024-06-05T172855.401.json
+
+###
+
+# curl -i -X GET
+#  'https://api-sandbox.sendpro360.pitneybowes.com/shipping/api/v1/shipments?startDate=string&endDate=string&page=string&size=string'
+#  -H 'Authorization: Bearer <YOUR_TOKEN_HERE>'
+GET https://api-sandbox.sendpro360.pitneybowes.com/shipping/api/v1/shipments
+Authorization: Bearer eyJraWQiOiJaS3dDcjJKUjN6a2UxVnZkd3lCSVJILVUzNTB6MnlURVAxa0dCUTZnQkVnIiwiYWxnIjoiUlMyNTYifQ.eyJ2ZXIiOjEsImp0aSI6IkFULkVZM0lLdE9ZYWFhZVQtRlpUTTJaUHEtN21QRGdVSVAyYU5NdU0tWWRXNFEiLCJpc3MiOiJodHRwczovL3BpdG5leWJvd2VzLm9rdGFwcmV2aWV3LmNvbS9vYXV0aDIvYXVzMWxzNXpmZWJrOXZ6bWUwaDgiLCJhdWQiOiJodHRwczovL2FwaS5waXRuZXlib3dlcy5jb20iLCJzdWIiOiJBUEktU1AzNjAtMURnazRiUTJQYnctUFBEIiwiaWF0IjoxNzE3NjIyNzI3LCJleHAiOjE3MTc2MzcxMjcsImNpZCI6IjBvYTIzbXIzem1qOE9NcDNNMGg4Iiwic2NwIjpbInBzYXBpIl0sInN2Y1ZlciI6IjMuMCIsImNsYWltX3BzYXBpIjp7ImVudElEIjoiU3VtbWl0IiwidWlkIjoiMG9hMjNtcjN6bWo4T01wM00waDgiLCJzdWJJRCI6InN1bW1pdF9wcm9qZWN0IiwiY250cnkiOiJVUyIsInBsYW5zIjpbIlNFTkRJTkdfU0hJUEFDQ0VMX0VOVEVSUFJJU0UiLCJTSElQQUNDRUxfRU5URVJQUklTRV9QTEFURk9STSIsIkNPTkZJR1VSQUJMRV9VSV9QTEFOIiwiUE9TVEFMX0FQUF9QTEFOX0VDT01NRVJDRSIsIkFOQUxZVElDUzM2MF9TSElQUElOR19QTEFOIiwiQU5BTFlUSUNTMzYwX0FEVkFEVklTT1JfUExBTiIsIkFQSV9NQU5BR0UiLCJBUElfQkFTSUMiLCJBUElfU0VORElOR19CQVNJQyJdfX0.vGzieIFH9W2Hyiy7nk5waefhIQKrBQC8GB-FYPRuiA8yvkd3yBLqPwVQ2Gpy1pIjkcJCxRgvChbHHiHqxnF_fTL9ewPNSQsm9Y0udmQ5n-1bbbCyJMemRr61GXGrOzaWow_WvGUnKI-zJH-YIWv7AwqEgWTlek59GVdaZ_oumIt-EWdoXa8NZk8z0sxuuavJUAJ2CU0Iztv4pABvEgCmzeorPGgg92WjIR91kIjPa8e3eorcy5WUpVXgt9KtGsnOKZvjFcG290tdNz0PnivmYqQ6Tl6o58iBrN4OR7AHV2Q0-gKdD_kMkir2DV9qRGx_ZfOswlc3PREM7NbWFf_38w
+
+<> 2024-06-05T173719.200.json
+<> 2024-06-05T173424.400.json
+<> 2024-06-05T173401.400.json
+
+###
+
+# curl -i -X POST
+#  https://api-sandbox.sendpro360.pitneybowes.com/carrieraccountmgmt/api/v1/carrierAccounts
+#  -H 'Authorization: Bearer <YOUR_TOKEN_HERE>'
+#  -H 'Content-Type: application/json'
+#  -H 'X-PB-Developer-Partner-ID: string'
+#  -d '{
+#    "accountNumber": "123338",
+#    "carrierID": "FEDEX",
+#    "description": "FedEx Account",
+#    "parameters": {
+#      "username": "abcjsk",
+#      "password": "*******",
+#      "accountAddress": {
+#        "addressLine1": "27 Watervw Dr",
+#        "city": "shelton",
+#        "state": "CT",
+#        "postalCode": "06484",
+#        "countryCode": "US",
+#        "email": "",
+#        "company": "",
+#        "name": "",
+#        "phone": ""
+#      },
+#      "contactAddress": {
+#        "addressLine1": "27 Watervw Dr",
+#        "city": "shelton",
+#        "state": "CT",
+#        "postalCode": "06484",
+#        "countryCode": "US",
+#        "email": "",
+#        "company": "",
+#        "name": "",
+#        "phone": ""
+#      },
+#      "hubID": "1544",
+#      "invoiceAmount": "2121",
+#      "invoiceControlID": "123D",
+#      "invoiceDate": "20201203",
+#      "invoiceNumber": "saas212121",
+#      "hostName": "gppprt2ftp-ext.test.com",
+#      "manifestUserId": "testuser",
+#      "manifestPassword": "testpassword",
+#      "manifestPath": "/in"
+#    }
+#  }'
+POST https://api-sandbox.sendpro360.pitneybowes.com/carrieraccountmgmt/api/v1/carrierAccounts
+Authorization: Bearer eyJraWQiOiJaS3dDcjJKUjN6a2UxVnZkd3lCSVJILVUzNTB6MnlURVAxa0dCUTZnQkVnIiwiYWxnIjoiUlMyNTYifQ.eyJ2ZXIiOjEsImp0aSI6IkFULkVZM0lLdE9ZYWFhZVQtRlpUTTJaUHEtN21QRGdVSVAyYU5NdU0tWWRXNFEiLCJpc3MiOiJodHRwczovL3BpdG5leWJvd2VzLm9rdGFwcmV2aWV3LmNvbS9vYXV0aDIvYXVzMWxzNXpmZWJrOXZ6bWUwaDgiLCJhdWQiOiJodHRwczovL2FwaS5waXRuZXlib3dlcy5jb20iLCJzdWIiOiJBUEktU1AzNjAtMURnazRiUTJQYnctUFBEIiwiaWF0IjoxNzE3NjIyNzI3LCJleHAiOjE3MTc2MzcxMjcsImNpZCI6IjBvYTIzbXIzem1qOE9NcDNNMGg4Iiwic2NwIjpbInBzYXBpIl0sInN2Y1ZlciI6IjMuMCIsImNsYWltX3BzYXBpIjp7ImVudElEIjoiU3VtbWl0IiwidWlkIjoiMG9hMjNtcjN6bWo4T01wM00waDgiLCJzdWJJRCI6InN1bW1pdF9wcm9qZWN0IiwiY250cnkiOiJVUyIsInBsYW5zIjpbIlNFTkRJTkdfU0hJUEFDQ0VMX0VOVEVSUFJJU0UiLCJTSElQQUNDRUxfRU5URVJQUklTRV9QTEFURk9STSIsIkNPTkZJR1VSQUJMRV9VSV9QTEFOIiwiUE9TVEFMX0FQUF9QTEFOX0VDT01NRVJDRSIsIkFOQUxZVElDUzM2MF9TSElQUElOR19QTEFOIiwiQU5BTFlUSUNTMzYwX0FEVkFEVklTT1JfUExBTiIsIkFQSV9NQU5BR0UiLCJBUElfQkFTSUMiLCJBUElfU0VORElOR19CQVNJQyJdfX0.vGzieIFH9W2Hyiy7nk5waefhIQKrBQC8GB-FYPRuiA8yvkd3yBLqPwVQ2Gpy1pIjkcJCxRgvChbHHiHqxnF_fTL9ewPNSQsm9Y0udmQ5n-1bbbCyJMemRr61GXGrOzaWow_WvGUnKI-zJH-YIWv7AwqEgWTlek59GVdaZ_oumIt-EWdoXa8NZk8z0sxuuavJUAJ2CU0Iztv4pABvEgCmzeorPGgg92WjIR91kIjPa8e3eorcy5WUpVXgt9KtGsnOKZvjFcG290tdNz0PnivmYqQ6Tl6o58iBrN4OR7AHV2Q0-gKdD_kMkir2DV9qRGx_ZfOswlc3PREM7NbWFf_38w
+Content-Type: application/json
+
+{
+  "accountNumber": "123456789",
+  "carrierID": "FEDEX",
+  "description": "FedEx Account",
+  "parameters": {
+    "username": "username",
+    "password": "password",
+    "accountAddress": {
+      "addressLine1": "27 Watervw Dr",
+      "city": "shelton",
+      "state": "CT",
+      "postalCode": "06484",
+      "countryCode": "US",
+      "email": "test@email.com",
+      "company": "",
+      "name": "John Barnaby",
+      "phone": "111 111 1111"
+    },
+    "contactAddress": {
+      "addressLine1": "27 Watervw Dr",
+      "city": "shelton",
+      "state": "CT",
+      "postalCode": "06484",
+      "countryCode": "US",
+      "email": "test@email.com",
+      "company": "",
+      "name": "John Barnaby",
+      "phone": "111 111 1111"
+    },
+    "hubID": "1544",
+    "invoiceDate": "20201203"
+  }
+}
+
+<> 2024-06-05T195013.400.json
+<> 2024-06-05T194651.400.json
+<> 2024-06-05T194609.400.json
+<> 2024-06-05T194212.400.json
+<> 2024-06-05T193804.400.json
+<> 2024-06-05T193519.400.json
+<> 2024-06-05T193233.400.json
+<> 2024-06-05T193045.400.json
+<> 2024-06-05T192947.400.json
+<> 2024-06-05T180051.400.json
+<> 2024-06-05T180029.400.json
+
+###
+
+
+
+#curl -i -X GET \
+#  'https://api-sandbox.sendpro360.pitneybowes.com/carrieraccountmgmt/api/v1/carrierAccounts/{carrierAccountID}' \
+#  -H 'Authorization: Bearer <YOUR_TOKEN_HERE>' \
+#  -H 'X-PB-Developer-Partner-ID: string'
+
+GET https://api-sandbox.sendpro360.pitneybowes.com/carrieraccountmgmt/api/v1/carrierAccounts
+Authorization: Bearer eyJraWQiOiJaS3dDcjJKUjN6a2UxVnZkd3lCSVJILVUzNTB6MnlURVAxa0dCUTZnQkVnIiwiYWxnIjoiUlMyNTYifQ.eyJ2ZXIiOjEsImp0aSI6IkFULkVZM0lLdE9ZYWFhZVQtRlpUTTJaUHEtN21QRGdVSVAyYU5NdU0tWWRXNFEiLCJpc3MiOiJodHRwczovL3BpdG5leWJvd2VzLm9rdGFwcmV2aWV3LmNvbS9vYXV0aDIvYXVzMWxzNXpmZWJrOXZ6bWUwaDgiLCJhdWQiOiJodHRwczovL2FwaS5waXRuZXlib3dlcy5jb20iLCJzdWIiOiJBUEktU1AzNjAtMURnazRiUTJQYnctUFBEIiwiaWF0IjoxNzE3NjIyNzI3LCJleHAiOjE3MTc2MzcxMjcsImNpZCI6IjBvYTIzbXIzem1qOE9NcDNNMGg4Iiwic2NwIjpbInBzYXBpIl0sInN2Y1ZlciI6IjMuMCIsImNsYWltX3BzYXBpIjp7ImVudElEIjoiU3VtbWl0IiwidWlkIjoiMG9hMjNtcjN6bWo4T01wM00waDgiLCJzdWJJRCI6InN1bW1pdF9wcm9qZWN0IiwiY250cnkiOiJVUyIsInBsYW5zIjpbIlNFTkRJTkdfU0hJUEFDQ0VMX0VOVEVSUFJJU0UiLCJTSElQQUNDRUxfRU5URVJQUklTRV9QTEFURk9STSIsIkNPTkZJR1VSQUJMRV9VSV9QTEFOIiwiUE9TVEFMX0FQUF9QTEFOX0VDT01NRVJDRSIsIkFOQUxZVElDUzM2MF9TSElQUElOR19QTEFOIiwiQU5BTFlUSUNTMzYwX0FEVkFEVklTT1JfUExBTiIsIkFQSV9NQU5BR0UiLCJBUElfQkFTSUMiLCJBUElfU0VORElOR19CQVNJQyJdfX0.vGzieIFH9W2Hyiy7nk5waefhIQKrBQC8GB-FYPRuiA8yvkd3yBLqPwVQ2Gpy1pIjkcJCxRgvChbHHiHqxnF_fTL9ewPNSQsm9Y0udmQ5n-1bbbCyJMemRr61GXGrOzaWow_WvGUnKI-zJH-YIWv7AwqEgWTlek59GVdaZ_oumIt-EWdoXa8NZk8z0sxuuavJUAJ2CU0Iztv4pABvEgCmzeorPGgg92WjIR91kIjPa8e3eorcy5WUpVXgt9KtGsnOKZvjFcG290tdNz0PnivmYqQ6Tl6o58iBrN4OR7AHV2Q0-gKdD_kMkir2DV9qRGx_ZfOswlc3PREM7NbWFf_38w
+
+<> 2024-06-05T175720.403.json

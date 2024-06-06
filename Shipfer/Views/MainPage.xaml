@@ -44,10 +44,10 @@
                         ContentLayout="Left, 20" HeightRequest="60"
                         BackgroundColor="{DynamicResource PrimaryColour}" 
                         TextColor="{DynamicResource SecondaryColour}" StyleClass="ElevatedButton"/>
-                <Grid ColumnDefinitions="*,*" ColumnSpacing="4">
-                    <Button StyleClass="ElevatedButton" Text="New Shipment" HeightRequest="60" BackgroundColor="#1abc9c" TextColor="White" CornerRadius="8" Padding="10" Grid.Column="0"/>
+                <!--<Grid ColumnDefinitions="*,*" ColumnSpacing="4">-->
+                    <!--<Button StyleClass="ElevatedButton" Text="New Shipment" HeightRequest="60" BackgroundColor="#1abc9c" TextColor="White" CornerRadius="8" Padding="10" Grid.Column="0"/>
                     <Button Text="Schedule Pickup" BackgroundColor="#34495e" TextColor="White" HeightRequest="60" CornerRadius="8" Padding="10" Grid.Column="1" StyleClass="ElevatedButton"/>
-                </Grid>
+                </Grid>-->
             </VerticalStackLayout>
 
             <!-- Current Shipments -->

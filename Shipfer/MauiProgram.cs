@@ -1,6 +1,4 @@
-﻿using CommunityToolkit.Maui;
-using CommunityToolkit.Maui.Media;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using Shipfer.ViewModels;
 using Shipfer.Views;
 using UraniumUI;
@@ -14,7 +12,6 @@ public static class MauiProgram
         var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()
-            .UseMauiCommunityToolkit()
             .UseUraniumUI()
             .UseUraniumUIMaterial()
             .ConfigureFonts(fonts =>
@@ -34,10 +31,8 @@ public static class MauiProgram
         builder.Services.AddSingleton<ChatPage>();
         builder.Services.AddSingleton<ProductsPage>();
 
-        builder.Services.AddSingleton<ISpeechToText>(SpeechToText.Default);
-
 #if DEBUG
-        builder.Logging.AddDebug();
+		builder.Logging.AddDebug();
 #endif
 
         return builder.Build();

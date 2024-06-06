@@ -1,13 +1,9 @@
-using Shipfer.ViewModels;
-
 namespace Shipfer.Views;
 
 public partial class ChatPage : ContentPage
 {
-	public ChatPage(ChatViewModel viewModel)
+	public ChatPage()
 	{
 		InitializeComponent();
-
-		BindingContext = viewModel;
 	}
 }

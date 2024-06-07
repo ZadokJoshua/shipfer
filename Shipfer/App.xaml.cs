@@ -8,7 +8,7 @@ public partial class App : Application
     {
         InitializeComponent();
 
-        MainPage = new AppShell();
-        //MainPage = new AuthPage(); //I am getting a null exception
+        //MainPage = new AppShell();
+        MainPage = new AuthPage(); //I am getting a null exception
     }
 }

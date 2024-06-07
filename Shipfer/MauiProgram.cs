@@ -24,15 +24,10 @@ public static class MauiProgram
                 fonts.AddFontAwesomeIconFonts();
             });
 
-        builder.Services.AddSingleton<AuthViewModel>();
         builder.Services.AddSingleton<MainViewModel>();
         builder.Services.AddSingleton<ChatViewModel>();
-        builder.Services.AddSingleton<ProductsViewModel>();
-
-        builder.Services.AddSingleton<AuthPage>();
         builder.Services.AddSingleton<MainPage>();
         builder.Services.AddSingleton<ChatPage>();
-        builder.Services.AddSingleton<ProductsPage>();
 
         builder.Services.AddSingleton<ISpeechToText>(SpeechToText.Default);
 

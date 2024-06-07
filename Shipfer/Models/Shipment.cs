@@ -8,4 +8,5 @@ namespace Shipfer.Models;
 
 public class Shipment
 {
+
 }

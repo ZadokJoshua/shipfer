@@ -4,10 +4,10 @@ namespace Shipfer.Views;
 
 public partial class AuthPage : ContentPage
 {
-	public AuthPage(AuthViewModel viewModel)
+	public AuthPage()
 	{
 		InitializeComponent();
 
-		BindingContext = viewModel;
+		BindingContext = new AuthViewModel();
 	}
 }

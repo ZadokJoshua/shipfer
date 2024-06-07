@@ -3,141 +3,171 @@
     x:Class="Shipfer.Views.ChatPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:control="clr-namespace:Shipfer.Controls"
     xmlns:fa="clr-namespace:UraniumUI.Icons.FontAwesome;assembly=UraniumUI.Icons.FontAwesome"
     xmlns:material="clr-namespace:UraniumUI.Material.Controls;assembly=UraniumUI.Material"
-    xmlns:viewmodel="clr-namespace:Shipfer.ViewModels"
     xmlns:model="clr-namespace:Shipfer.Models"
+    xmlns:viewmodel="clr-namespace:Shipfer.ViewModels"
     Title="Chat with Shipfer AI"
     x:DataType="viewmodel:ChatViewModel"
-    xmlns:control="clr-namespace:Shipfer.Controls"
     Shell.NavBarIsVisible="False"
     Shell.PresentationMode="Modal">
 
     <ContentPage.Resources>
-        <DataTemplate x:Key="BotMessage"  x:DataType="model:Message">
+        <DataTemplate x:Key="BotMessage" x:DataType="model:Message">
             <VerticalStackLayout HorizontalOptions="Start">
-                <Label Text="Bot" HorizontalOptions="Start" FontSize="Caption"/>
-                <Border BackgroundColor="Teal" HorizontalOptions="Start" Padding="16,8">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Caption"
+                    HorizontalOptions="Start"
+                    Text="Bot" />
+                <Border
+                    Padding="16,8"
+                    BackgroundColor="Teal"
+                    HorizontalOptions="Start"
+                    StrokeThickness="0">
                     <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="10,10,0,10" />
+                        <RoundRectangle CornerRadius="0,20,20,20" />
                     </Border.StrokeShape>
-                    <Label Text="{x:Binding Text}" LineBreakMode="WordWrap"/>
+                    <Label
+                        LineBreakMode="WordWrap"
+                        Text="{x:Binding Text}"
+                        TextColor="White" />
                 </Border>
             </VerticalStackLayout>
         </DataTemplate>
-        <DataTemplate x:Key="UserMessage"  x:DataType="model:Message">
+        <DataTemplate x:Key="UserMessage" x:DataType="model:Message">
             <VerticalStackLayout HorizontalOptions="End">
-                <Label Text="User" FontSize="Caption" HorizontalOptions="End"/>
-                <Border BackgroundColor="Orange" HorizontalOptions="End" Padding="16,8">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Caption"
+                    HorizontalOptions="End"
+                    Text="User" />
+                <Border
+                    Padding="16,8"
+                    BackgroundColor="DarkSlateGray"
+                    HorizontalOptions="End"
+                    StrokeThickness="0">
                     <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="10,10,10,0" />
+                        <RoundRectangle CornerRadius="20,0,20,20" />
                     </Border.StrokeShape>
-                    <Label Text="{x:Binding Text}" LineBreakMode="WordWrap"/>
+                    <Label
+                        LineBreakMode="WordWrap"
+                        Text="{x:Binding Text}"
+                        TextColor="#FFFFFF" />
                 </Border>
             </VerticalStackLayout>
         </DataTemplate>
     </ContentPage.Resources>
 
-    <Grid Margin="10" RowDefinitions="Auto,*,Auto" RowSpacing="8">
-        <HorizontalStackLayout Grid.Row="0">
-            <material:CheckBox />
-            <Label Text="Play responses from copilot as audio" VerticalOptions="Center" />
+    <Grid
+        Margin="10"
+        RowDefinitions="Auto,*,Auto"
+        RowSpacing="8">
+        <HorizontalStackLayout Grid.Row="0" HorizontalOptions="StartAndExpand">
+            <material:CheckBox IsChecked="{x:Binding PlayRecentBotResponse}" Text="Play responses from copilot as audio" />
+            <ActivityIndicator
+                IsEnabled="{x:Binding IsBusy}"
+                IsRunning="{x:Binding IsBusy}"
+                Color="#52d681" />
         </HorizontalStackLayout>
 
         <!--  Main Content Area  -->
         <VerticalStackLayout
-                Grid.Row="1"
-                HorizontalOptions="Center"
-                IsVisible="False"
-                Spacing="8"
-                VerticalOptions="Center">
+            Grid.Row="1"
+            HorizontalOptions="Center"
+            IsVisible="False"
+            Spacing="8"
+            VerticalOptions="Center">
             <Image HeightRequest="100" Source="shipfer.png" />
             <Label
-                    FontAttributes="Bold"
-                    FontSize="Title"
-                    HorizontalOptions="Center"
-                    Text="Welcome to Shipfer AI!"
-                    TextColor="#333" />
+                FontAttributes="Bold"
+                FontSize="Title"
+                HorizontalOptions="Center"
+                Text="Welcome to Shipfer AI!"
+                TextColor="#333" />
             <Label
-                    FontSize="16"
-                    HorizontalOptions="Center"
-                    HorizontalTextAlignment="Center"
-                    Text="How can we assist you today? Choose an option below or type your query."
-                    TextColor="#666" />
+                FontSize="16"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Text="How can we assist you today? Choose an option below or type your query."
+                TextColor="#666" />
             <Button
-                    Margin="0,5"
-                    BackgroundColor="{DynamicResource PrimaryColour}"
-                    CornerRadius="8"
-                    HeightRequest="50"
-                    Text="📦 Create shipment"
-                    TextColor="{DynamicResource SecondaryColour}" />
+                Margin="0,5"
+                BackgroundColor="{DynamicResource PrimaryColour}"
+                CornerRadius="8"
+                HeightRequest="50"
+                Text="📦 Create shipment"
+                TextColor="{DynamicResource SecondaryColour}" />
             <Button
-                    Margin="0,5"
-                    BackgroundColor="{DynamicResource PrimaryColour}"
-                    CornerRadius="8"
-                    HeightRequest="50"
-                    Text="🛍️ Check inventory"
-                    TextColor="{DynamicResource SecondaryColour}" />
+                Margin="0,5"
+                BackgroundColor="{DynamicResource PrimaryColour}"
+                CornerRadius="8"
+                HeightRequest="50"
+                Text="🛍️ Check inventory"
+                TextColor="{DynamicResource SecondaryColour}" />
             <Button
-                    Margin="0,5"
-                    BackgroundColor="{DynamicResource PrimaryColour}"
-                    CornerRadius="8"
-                    HeightRequest="50"
-                    Text="🧾 Confirm print label"
-                    TextColor="{DynamicResource SecondaryColour}" />
+                Margin="0,5"
+                BackgroundColor="{DynamicResource PrimaryColour}"
+                CornerRadius="8"
+                HeightRequest="50"
+                Text="🧾 Confirm print label"
+                TextColor="{DynamicResource SecondaryColour}" />
         </VerticalStackLayout>
 
-        <!-- Chat Area -->
-        <ScrollView IsVisible="True" Grid.Row="1">
+        <!--  Chat Area  -->
+        <ScrollView
+            Grid.Row="1"
+            HorizontalScrollBarVisibility="Never"
+            IsVisible="True">
             <CollectionView ItemsSource="{x:Binding Messages}">
                 <CollectionView.ItemsLayout>
-                    <LinearItemsLayout ItemSpacing="4" Orientation="Vertical" />
+                    <LinearItemsLayout ItemSpacing="10" Orientation="Vertical" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
-                    <control:MessageDataTemplateSelector BotMessage="{x:StaticResource BotMessage}" UserMessage="{x:StaticResource UserMessage}"/>
+                    <control:MessageDataTemplateSelector BotMessage="{x:StaticResource BotMessage}" UserMessage="{x:StaticResource UserMessage}" />
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </ScrollView>
 
         <!--  Chat Input Area  -->
         <Grid
-                Grid.Row="2"
-                ColumnDefinitions="Auto,*,Auto"
-                ColumnSpacing="4">
-            <ImageButton HeightRequest="30" VerticalOptions="Center">
+            Grid.Row="2"
+            ColumnDefinitions="*,Auto,Auto"
+            ColumnSpacing="4">
+            <material:TextField
+                Grid.Column="0"
+                AccentColor="{DynamicResource PrimaryColour}"
+                BorderColor="{DynamicResource PrimaryColour}"
+                HorizontalOptions="FillAndExpand"
+                Text="{x:Binding UserMessage}"
+                VerticalOptions="Center" />
+            <ImageButton
+                Grid.Column="1"
+                Background="Transparent"
+                HeightRequest="30"
+                Pressed="MicrophineButton_Pressed"
+                VerticalOptions="Center">
                 <ImageButton.Source>
                     <FontImageSource
-                            FontFamily="FASolid"
-                            Glyph="{x:Static fa:Solid.Microphone}"
-                            Color="#100F10" />
+                        x:Name="MicrophineButton"
+                        FontFamily="FASolid"
+                        Glyph="{x:Static fa:Solid.Microphone}"
+                        Color="#52d681" />
                 </ImageButton.Source>
             </ImageButton>
-            <material:TextField
-                    Grid.Column="1"
-                    Margin="10,0"
-                    AccentColor="{DynamicResource PrimaryColour}"
-                    BorderColor="{DynamicResource PrimaryColour}"
-                    HorizontalOptions="FillAndExpand"
-                    VerticalOptions="StartAndExpand" />
-            <!--<ImageButton
-                Grid.Column="1"
+            <Button
+                Grid.Column="2"
                 BackgroundColor="{DynamicResource PrimaryColour}"
+                CornerRadius="20"
                 HeightRequest="50"
                 HorizontalOptions="Center"
-                Source="microphone.svg"
-                Padding="50"
-                CornerRadius="20"
-                VerticalOptions="Center"
-                WidthRequest="50" />-->
-            <Button
-                    Grid.Column="2"
-                    BackgroundColor="{DynamicResource PrimaryColour}"
-                    CornerRadius="20"
-                    HeightRequest="50"
-                    HorizontalOptions="Center"
-                    Text="Send"
-                    TextColor="{x:DynamicResource TertiaryColour}"
-                    VerticalOptions="Start" />
+                TextColor="{x:DynamicResource TertiaryColour}"
+                VerticalOptions="Center">
+                <Button.ImageSource>
+                    <FontImageSource FontFamily="FASolid" Glyph="{x:Static fa:Solid.ArrowRight}" />
+                </Button.ImageSource>
+            </Button>
         </Grid>
     </Grid>
 </ContentPage>

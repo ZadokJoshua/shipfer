@@ -23,7 +23,7 @@
                     HorizontalOptions="Center"
                     Text="Shipfer" />
                 <Label
-                    FontSize="Micro"
+                    FontSize="Caption"
                     HorizontalOptions="Center"
                     Text="Effortless shipping for everyone" />
             </VerticalStackLayout>

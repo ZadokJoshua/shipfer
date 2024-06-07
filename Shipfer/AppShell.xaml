@@ -3,18 +3,15 @@
     x:Class="Shipfer.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fa="clr-namespace:UraniumUI.Icons.FontAwesome;assembly=UraniumUI.Icons.FontAwesome"
+    xmlns:material="clr-namespace:UraniumUI.Material.Controls;assembly=UraniumUI.Material"
     xmlns:views="clr-namespace:Shipfer.Views"
     Title="Shipfer"
+    Shell.TabBarBackgroundColor="{DynamicResource TertiaryColour}"
     Shell.TabBarForegroundColor="{DynamicResource PrimaryColour}"
     Shell.TabBarTitleColor="{DynamicResource PrimaryColour}"
-    Shell.TabBarUnselectedColor="#CCEBEB"
-    Shell.TabBarBackgroundColor="{DynamicResource TertiaryColour}">
+    Shell.TabBarUnselectedColor="#CCEBEB">
 
-    <!--<ShellContent
-        Title="Auth"
-        ContentTemplate="{DataTemplate views:AuthPage}" 
-        Route="AuthPage" />-->
-    
     <TabBar>
         <ShellContent
             Title="Home"
@@ -24,12 +21,13 @@
         <ShellContent
             Title="Copilot"
             ContentTemplate="{DataTemplate views:ChatPage}"
-            Icon="chatbot.png"
-            Route="ChatPage" />
-        <ShellContent
-            Title="Products"
-            ContentTemplate="{DataTemplate views:ProductsPage}"
-            Icon="store.png"
-            Route="ProductsPage" />
+            Route="ChatPage">
+            <ShellContent.Icon>
+                <FontImageSource
+                    FontFamily="FASolid"
+                    Glyph="{x:Static fa:Solid.Robot}"
+                    Color="#52d681" />
+            </ShellContent.Icon>
+        </ShellContent>
     </TabBar>
 </Shell>

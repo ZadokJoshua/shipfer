@@ -89,6 +89,7 @@
                     HeightRequest="60"
                     StyleClass="ElevatedButton"
                     Text="Chat with Shipfer Copilot"
+                    Command="{x:Binding GoToCopilotCommand}"
                     TextColor="{DynamicResource SecondaryColour}">
                     <Button.ImageSource>
                         <FontImageSource

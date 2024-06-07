@@ -21,6 +21,7 @@ public partial class ChatPage : ContentPage
 
     private async void MicrophineButton_Pressed(object sender, EventArgs e)
     {
+        var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
         try
         {
             MicrophineButton.Color = Color.FromArgb("#F08080");
@@ -30,12 +31,14 @@ public partial class ChatPage : ContentPage
                 await Toast.Make("Permission not granted").Show(CancellationToken.None);
                 return;
             }
+            var currentCulture = CultureInfo.CurrentCulture;
+
             var recognitionResult = await SpeechToText.Default.ListenAsync(
-                                        CultureInfo.GetCultureInfo("en-us"),
+                                        CultureInfo.GetCultureInfo(currentCulture.Name),
                                         new Progress<string>(partialText =>
                                         {
                                             _viewModel.UserMessage += partialText + " ";
-                                        }), cancellationToken);
+                                        }), cts.Token);
 
             if (recognitionResult.IsSuccessful)
             {
@@ -49,6 +52,7 @@ public partial class ChatPage : ContentPage
         finally
         {
             MicrophineButton.Color = Color.FromArgb("#52D681");
+            cts.Dispose();
         }
     }
 }

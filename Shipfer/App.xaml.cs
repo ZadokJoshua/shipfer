@@ -11,7 +11,7 @@ public partial class App : Application
     {
         InitializeComponent();
 
-        PreferenceHelper.ClearUserDetails();
+        // PreferenceHelper.ClearUserDetails();
 
         var userDetails = PreferenceHelper.GetUserDetails();
         var session = userDetails.session;

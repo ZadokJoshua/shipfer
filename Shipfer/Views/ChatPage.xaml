@@ -141,7 +141,7 @@
                 BorderColor="{DynamicResource PrimaryColour}"
                 HorizontalOptions="FillAndExpand"
                 Text="{x:Binding UserMessage}"
-                VerticalOptions="Center" />
+                VerticalOptions="Center" AllowClear="True" />
             <ImageButton
                 Grid.Column="1"
                 Background="Transparent"

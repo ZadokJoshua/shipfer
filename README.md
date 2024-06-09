@@ -1,6 +1,6 @@
-<Shipfer banner image>
+![shipfer-banner-image](https://github.com/ZadokJoshua/shipfer/assets/65626254/504f5dbd-412b-44b6-a8ae-52455583b335)
 
-<b>Shipfer</b> is a project designed to revolutionize the shipping process for small businesses and online sellers. By utilizing AI solutions and real-time data integration from the Pitney Bowes Shipping 360 API, Shipfer aims to create a seamless and efficient shipping experience. Our platform provides users with carrier rates suggestions, ensuring that every shipment is cost-effective, and easily managed. Shipfer is not just an app; it’s a comprehensive solution to streamline logistics, reduce costs, and enhance customer satisfaction, making the complexities of shipping simple and accessible for everyone.
+<b>Shipfer</b> is a project designed to revolutionize the shipping process for small businesses and online sellers. By utilizing AI solutions and real-time data integration from the Pitney Bowes Shipping 360 API, Shipfer aims to create a seamless and efficient shipping experience. Our platform provides users with carrier rates suggestions, ensuring that every shipment is cost-effective, and easily managed. Shipfer is not just an app; itâ€™s a comprehensive solution to streamline logistics, reduce costs, and enhance customer satisfaction, making the complexities of shipping simple and accessible for everyone.
 
 <Mock up image>
 

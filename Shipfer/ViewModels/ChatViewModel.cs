@@ -32,54 +32,21 @@ public partial class ChatViewModel : ViewModelBase
         Messages.Add(new Message { IsBot = false, Text = "I want to transport packages." });
 
         _speechToText = speechToText;
+        Play(null);
     }
 
     #region Methods
-    async Task StartListening(CancellationToken cancellationToken)
+    public async Task Play(string message)
     {
-        var isGranted = await _speechToText.RequestPermissions(cancellationToken);
-        if (!isGranted)
+        IEnumerable<Locale> locales = await TextToSpeech.Default.GetLocalesAsync();
+        SpeechOptions options = new SpeechOptions()
         {
-            await Toast.Make("Permission not granted").Show(CancellationToken.None);
-            return;
-        }
+            Pitch = 1.2f,
+            Volume = 0.55f,
+            Locale = locales.FirstOrDefault()
+        };
 
-        _speechToText.RecognitionResultUpdated += OnRecognitionTextUpdated;
-        _speechToText.RecognitionResultCompleted += OnRecognitionTextCompleted;
-        await SpeechToText.StartListenAsync(CultureInfo.CurrentCulture, CancellationToken.None);
-    }
-
-    async Task StopListening(CancellationToken cancellationToken)
-    {
-        await SpeechToText.StopListenAsync(CancellationToken.None);
-        SpeechToText.Default.RecognitionResultUpdated -= OnRecognitionTextUpdated;
-        SpeechToText.Default.RecognitionResultCompleted -= OnRecognitionTextCompleted;
-    }
-
-    void OnRecognitionTextUpdated(object? sender, SpeechToTextRecognitionResultUpdatedEventArgs args)
-    {
-        UserMessage += args.RecognitionResult;
-    }
-
-    void OnRecognitionTextCompleted(object? sender, SpeechToTextRecognitionResultCompletedEventArgs args)
-    {
-        UserMessage = args.RecognitionResult;
-    }
-    #endregion
-
-    #region Commands
-    [RelayCommand]
-    public async Task ListenToUserSpeech()
-    {
-        await StartListening(_cancellationTokenSource.Token);
-    }
-
-    [RelayCommand]
-    public async Task StopListeningToUserSpeech()
-    {
-        _cancellationTokenSource?.Cancel();
-
-        await StopListening(_cancellationTokenSource.Token);
+        await TextToSpeech.Default.SpeakAsync(message ?? "Hello! My name is Shipfer!");
     }
     #endregion
 }

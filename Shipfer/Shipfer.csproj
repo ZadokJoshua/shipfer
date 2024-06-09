@@ -69,6 +69,7 @@
 		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.40" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.40" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+		<PackageReference Include="Supabase" Version="1.0.3" />
 		<PackageReference Include="UraniumUI.Icons.FontAwesome" Version="2.8.1" />
 		<PackageReference Include="UraniumUI.Material" Version="2.8.1" />
 	</ItemGroup>

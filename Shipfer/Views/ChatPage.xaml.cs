@@ -21,7 +21,7 @@ public partial class ChatPage : ContentPage
 
     private async void MicrophineButton_Pressed(object sender, EventArgs e)
     {
-        var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
+        var cts = new CancellationTokenSource();
         try
         {
             MicrophineButton.Color = Color.FromArgb("#F08080");
@@ -32,7 +32,6 @@ public partial class ChatPage : ContentPage
                 return;
             }
             var currentCulture = CultureInfo.CurrentCulture;
-
             var recognitionResult = await SpeechToText.Default.ListenAsync(
                                         CultureInfo.GetCultureInfo(currentCulture.Name),
                                         new Progress<string>(partialText =>

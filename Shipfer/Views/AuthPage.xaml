@@ -3,15 +3,23 @@
     x:Class="Shipfer.Views.AuthPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fa="clr-namespace:UraniumUI.Icons.FontAwesome;assembly=UraniumUI.Icons.FontAwesome"
+    xmlns:material="clr-namespace:UraniumUI.Material.Controls;assembly=UraniumUI.Material"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:validations="clr-namespace:InputKit.Shared.Validations;assembly=InputKit.Maui"
     xmlns:viewmodel="clr-namespace:Shipfer.ViewModels"
     x:DataType="viewmodel:AuthViewModel"
     Shell.NavBarIsVisible="False"
-    Shell.PresentationMode="Modal"
-    xmlns:material="clr-namespace:UraniumUI.Material.Controls;assembly=UraniumUI.Material"
-    xmlns:fa="clr-namespace:UraniumUI.Icons.FontAwesome;assembly=UraniumUI.Icons.FontAwesome">
-    <ScrollView Margin="20" VerticalOptions="Center" HorizontalOptions="Center">
-        <VerticalStackLayout
-            Spacing="25">
+    Shell.PresentationMode="Modal">
+    <ContentPage.Resources>
+        <toolkit:InvertedBoolConverter x:Key="AuthProcessesVisibiltyInvertedBoolConverter" />
+    </ContentPage.Resources>
+
+    <ScrollView
+        Margin="20"
+        HorizontalOptions="Center"
+        VerticalOptions="Center">
+        <VerticalStackLayout MaximumWidthRequest="400" Spacing="15">
             <VerticalStackLayout Spacing="8">
                 <Image
                     HeightRequest="100"
@@ -28,32 +36,134 @@
                     Text="Effortless shipping for everyone" />
             </VerticalStackLayout>
 
-            <VerticalStackLayout Spacing="8">
+            <!--  Sign up  -->
+            <VerticalStackLayout IsVisible="{x:Binding IsLogin, Converter={StaticResource AuthProcessesVisibiltyInvertedBoolConverter}}" Spacing="8">
                 <Label
                     FontAttributes="Bold"
                     HorizontalOptions="Center"
                     Text="Welcome to Shipfer!" />
-                <VerticalStackLayout>
-                    <material:TextField Title="User Name" Icon="{FontImageSource FontFamily=FASolid, Glyph={x:Static fa:Solid.User}}" AccentColor="#40B3B3" />
-                </VerticalStackLayout>
-                <VerticalStackLayout>
-                    <material:TextField IsPassword="True" Title="Password" Icon="{FontImageSource FontFamily=FASolid, Glyph={x:Static fa:Solid.UserSecret}}" AccentColor="#40B3B3">
-                        <material:TextField.Attachments>
-                            <material:TextFieldPasswordShowHideAttachment />
-                        </material:TextField.Attachments>
-                    </material:TextField>
-                </VerticalStackLayout>
-                <Label FontSize="Caption" Text="Used Shipfer before? Login here" HorizontalOptions="Center"/>
+                <material:TextField
+                    Title="Name"
+                    AccentColor="#40B3B3"
+                    Icon="{FontImageSource FontFamily=FASolid,
+                                           Glyph={x:Static fa:Solid.User}}"
+                    Text="{x:Binding UserName}" />
+                <material:TextField
+                    Title="Email Address"
+                    AccentColor="#40B3B3"
+                    Icon="{FontImageSource FontFamily=FASolid,
+                                           Glyph={x:Static fa:Solid.AddressCard}}"
+                    Text="{x:Binding Email}" />
+                <material:TextField
+                    Title="Password"
+                    AccentColor="#40B3B3"
+                    Icon="{FontImageSource FontFamily=FASolid,
+                                           Glyph={x:Static fa:Solid.UserSecret}}"
+                    IsPassword="True"
+                    Text="{x:Binding Password}">
+                    <material:TextField.Attachments>
+                        <material:TextFieldPasswordShowHideAttachment />
+                    </material:TextField.Attachments>
+                </material:TextField>
+
+                <material:TextField
+                    Title="Address"
+                    AccentColor="#40B3B3"
+                    AllowClear="True"
+                    Icon="{FontImageSource FontFamily=FASolid,
+                                           Glyph={x:Static fa:Solid.LocationPin}}"
+                    Text="{x:Binding Address}" />
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="4">
+                    <Picker
+                        Title="Select Country"
+                        Grid.Column="0"
+                        FontSize="Caption"
+                        ItemsSource="{x:Binding CountryNames}"
+                        SelectedItem="{x:Binding SelectedCountryKey}" />
+                    <material:TextField
+                        Title="Postal Code"
+                        Grid.Column="1"
+                        AccentColor="#40B3B3"
+                        Icon="{FontImageSource FontFamily=FASolid,
+                                               Glyph={x:Static fa:Solid.SignsPost}}"
+                        Text="{x:Binding PostalCode}" />
+                </Grid>
+                <HorizontalStackLayout HorizontalOptions="Center" Spacing="4">
+                    <Label
+                        FontSize="Caption"
+                        HorizontalOptions="Center"
+                        Text="Used Shipfer before?" />
+                    <Label
+                        FontSize="Caption"
+                        HorizontalOptions="Center"
+                        Text="Login here"
+                        TextColor="#52d681">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{x:Binding ChangeAuthViewCommand}" NumberOfTapsRequired="1" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </HorizontalStackLayout>
                 <Button
                     BackgroundColor="#40B3B3"
+                    Command="{x:Binding SignUpCommand}"
                     CornerRadius="16"
                     Text="Sign up" />
-                <Button
-                    BackgroundColor="{AppThemeBinding Dark={DynamicResource SecondaryColour}, Light={DynamicResource TertiaryColour}}"
-                    CornerRadius="16"
-                    TextColor="{AppThemeBinding Dark={DynamicResource TertiaryColour}, Light={DynamicResource SecondaryColour}}"
-                    Text="Guest mode"  Command="{x:Binding GoToMainPageCommand}"/>
             </VerticalStackLayout>
+
+            <!--  Login In  -->
+            <VerticalStackLayout IsVisible="{x:Binding IsLogin}" Spacing="8">
+                <Label
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    Text="Welcome back to Shipfer!" />
+                <material:TextField
+                    Title="Email Address"
+                    AccentColor="#40B3B3"
+                    Icon="{FontImageSource FontFamily=FASolid,
+                                           Glyph={x:Static fa:Solid.AddressCard}}"
+                    Text="{x:Binding Email}" />
+                <material:TextField
+                    Title="Password"
+                    AccentColor="#40B3B3"
+                    Icon="{FontImageSource FontFamily=FASolid,
+                                           Glyph={x:Static fa:Solid.UserSecret}}"
+                    IsPassword="True"
+                    Text="{x:Binding Password}">
+                    <material:TextField.Attachments>
+                        <material:TextFieldPasswordShowHideAttachment />
+                    </material:TextField.Attachments>
+                </material:TextField>
+
+                <HorizontalStackLayout HorizontalOptions="Center" Spacing="4">
+                    <Label
+                        FontSize="Caption"
+                        HorizontalOptions="Center"
+                        Text="Create new Account?" />
+                    <Label
+                        FontSize="Caption"
+                        HorizontalOptions="Center"
+                        Text="Sign up here"
+                        TextColor="#52d681">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{x:Binding ChangeAuthViewCommand}" NumberOfTapsRequired="1" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </HorizontalStackLayout>
+                <Button
+                    BackgroundColor="#40B3B3"
+                    Command="{x:Binding LoginCommand}"
+                    CornerRadius="16"
+                    Text="Login" />
+
+            </VerticalStackLayout>
+            <Button
+                BackgroundColor="{AppThemeBinding Dark={DynamicResource SecondaryColour},
+                                                  Light={DynamicResource TertiaryColour}}"
+                Command="{x:Binding GuestUserLoginCommand}"
+                CornerRadius="16"
+                Text="Guest mode"
+                TextColor="{AppThemeBinding Dark={DynamicResource TertiaryColour},
+                                            Light={DynamicResource SecondaryColour}}" />
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

@@ -17,17 +17,28 @@
                 <Label
                     FontAttributes="Bold"
                     FontSize="24"
-                    Text="Hello, Demo User!" />
+                    Text="{x:Binding UserName,
+                                     StringFormat='Hello, {0}!'}" />
                 <Label
                     FontSize="14"
                     LineBreakMode="WordWrap"
                     MaxLines="2"
-                    Text="📌 Your Location: 123 Main Street Apartment 4B, New York, NY 10001, United States" />
-                <Label
-                    FontSize="14"
-                    LineBreakMode="WordWrap"
-                    MaxLines="2"
-                    Text="🏢 Business name: Max Distribution" />
+                    Text="{x:Binding Address,
+                                     StringFormat='Address: {0}'}" />
+                <HorizontalStackLayout Spacing="8">
+                    <Label
+                        FontSize="14"
+                        LineBreakMode="WordWrap"
+                        MaxLines="2"
+                        Text="{x:Binding PostalCode,
+                                         StringFormat='Postal code: {0}'}" />
+                    <Label
+                        FontSize="14"
+                        LineBreakMode="WordWrap"
+                        MaxLines="2"
+                        Text="{x:Binding Country,
+                                         StringFormat='Country: {0}'}" />
+                </HorizontalStackLayout>
             </VerticalStackLayout>
 
             <!--  Shipment Summary  -->
@@ -47,7 +58,7 @@
                             FontAttributes="Bold"
                             FontSize="24"
                             HorizontalOptions="Center"
-                            Text="5"
+                            Text="{x:Binding NumOfInTransit}"
                             TextColor="#00796b" />
                     </VerticalStackLayout>
                     <VerticalStackLayout HorizontalOptions="Center">
@@ -61,7 +72,7 @@
                             FontAttributes="Bold"
                             FontSize="24"
                             HorizontalOptions="Center"
-                            Text="10"
+                            Text="{x:Binding NumOfdelivered}"
                             TextColor="#00796b" />
                     </VerticalStackLayout>
                     <VerticalStackLayout HorizontalOptions="Center">
@@ -75,30 +86,27 @@
                             FontAttributes="Bold"
                             FontSize="24"
                             HorizontalOptions="Center"
-                            Text="3"
+                            Text="{x:Binding NumOfPending}"
                             TextColor="#00796b" />
                     </VerticalStackLayout>
                 </HorizontalStackLayout>
             </Frame>
 
             <!--  Quick Actions  -->
-                <Button
-                    BackgroundColor="{DynamicResource PrimaryColour}"
-                    ContentLayout="Left, 10"
-                    CornerRadius="8"
-                    HeightRequest="60"
-                    StyleClass="ElevatedButton"
-                    Text="Chat with Shipfer Copilot"
-                    Command="{x:Binding GoToCopilotCommand}"
-                    TextColor="{DynamicResource SecondaryColour}">
-                    <Button.ImageSource>
-                        <FontImageSource
-                            FontFamily="FASolid"
-                            Glyph="{x:Static fa:Solid.Robot}"/>
-                    </Button.ImageSource>
-                </Button>
+            <Button
+                BackgroundColor="{DynamicResource PrimaryColour}"
+                Command="{x:Binding GoToCopilotCommand}"
+                ContentLayout="Left, 10"
+                CornerRadius="8"
+                HeightRequest="60"
+                Text="Chat with Shipfer Copilot"
+                TextColor="{DynamicResource SecondaryColour}">
+                <Button.ImageSource>
+                    <FontImageSource FontFamily="FASolid" Glyph="{x:Static fa:Solid.Robot}" />
+                </Button.ImageSource>
+            </Button>
 
-                <!--  Current Shipments  -->
+            <!--  Current Shipments  -->
             <VerticalStackLayout Spacing="10">
                 <Label
                     FontAttributes="Bold"

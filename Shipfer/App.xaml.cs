@@ -1,4 +1,7 @@
-﻿using Shipfer.Views;
+﻿using Shipfer.Helpers;
+using Shipfer.Models;
+using Shipfer.Services;
+using Shipfer.Views;
 
 namespace Shipfer;
 
@@ -8,7 +11,18 @@ public partial class App : Application
     {
         InitializeComponent();
 
-        //MainPage = new AppShell();
-        MainPage = new AuthPage(); //I am getting a null exception
+        PreferenceHelper.ClearUserDetails();
+
+        var userDetails = PreferenceHelper.GetUserDetails();
+        var session = userDetails.session;
+
+        if (session != null && !session.Expired())
+        {
+            MainPage = new AppShell();
+        }
+        else
+        {
+            MainPage = new AuthPage();
+        }
     }
 }

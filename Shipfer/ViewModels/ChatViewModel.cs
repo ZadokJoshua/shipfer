@@ -23,18 +23,19 @@ public partial class ChatViewModel : ViewModelBase
 
     public ChatViewModel()
     {
-        Messages.Add(new Message { IsBot = true, Text = """
-            👋 Welcome to our shipping bot! Here's how to use it:
+        AddBotMessage(new Message { IsBot = true, Text = """
+            👋 Welcome to our shipping bot!
             Getting Started: Type your query or choose an option from the menu.
-            Asking Questions: Type "help" for assistance or guidance.
+            Asking Questions: Type "help" for assistance.
             Fastest Shipping Rates: Use "Get Fastest Shipping Rates". Include the destination country code (e.g., "US", "CA").
-
-            Input Format: Follow this format:
+            Input Format:
             - Weight: Include weight and unit (e.g., "3 kg").
-            - Dimensions: Use "Length x Width x Height" (e.g., "14x9x7").
-            - Destination Address: Clearly mention it.
-            - Country Code: For international, use codes (e.g., "US", "CA", "UK").
-            Getting Help: Reach out anytime. Happy shipping! 📦
+            - Dimensions: Use "LxWxH" (e.g., "14x9x7").
+            - Address: Clearly mention the destination address.
+            - Country Code: Use standard codes (e.g., "US", "CA", "UK").
+            Happy shipping! 📦
+
+            Note: Currently, each interaction is independent and uses your profile data for the best results.
             """ });
 
         _languageUnderstandingService = new LanguageUnderstandingService();
@@ -51,21 +52,26 @@ public partial class ChatViewModel : ViewModelBase
             Text = UserMessage
         });
 
+        var userInput = UserMessage;
+        UserMessage = string.Empty;
         try
         {
-            await HandleUserInputAsync(UserMessage);
+            await HandleUserInputAsync(userInput);
         }
         catch (Exception ex)
         {
 
             throw;
         }
-        UserMessage = string.Empty;
     }
 
-    private void AddBotMessage(Message message)
+    private async Task AddBotMessage(Message message)
     {
         Messages.Add(message with { IsBot = true });
+        if (PlayRecentBotResponse)
+        {
+            await Play(message.Text);
+        }
     }
 
     public async Task HandleUserInputAsync(string userInput)
@@ -151,9 +157,15 @@ public partial class ChatViewModel : ViewModelBase
             ],
         };
 
-        AddBotMessage(new Message { Text = "Getting updates now..." });
+        AddBotMessage(new Message { Text = "Getting rates now..." });
 
         var rates = await _shipping360Service.GetRates(rateRequest);
+
+        if(rates == null)
+        {
+            AddBotMessage(new Message { Text = "Error: Couldn't get rate" });
+            return;
+        }
 
         var sortedRates = rates.Rates.OrderBy(rate =>
         {
@@ -163,15 +175,18 @@ public partial class ChatViewModel : ViewModelBase
             }
 
             return DateTime.MaxValue;
-        }).ToList();
+        }).Take(5).ToList();
 
         StringBuilder messageBuilder = new StringBuilder();
-        messageBuilder.AppendLine("Here are the rates arranged by nearest expected delivery time and date:");
+        messageBuilder.AppendLine("Here are the top 5 rates arranged by nearest expected delivery time and date:");
 
         foreach (var rate in sortedRates)
         {
-            messageBuilder.AppendLine($"Carrier: {rate.Carrier}, Estimated Delivery Time: {rate.DeliveryCommitment.EstimatedDeliveryDateTime}");
+            int number = 1;
+            messageBuilder.AppendLine($"{number}. Carrier: {rate.Carrier.ToUpper()}, Estimated Delivery Time: {rate.DeliveryCommitment.EstimatedDeliveryDateTime}");
         }
+
+        messageBuilder.AppendLine("Type corresponding rate number to print shipment label.");
 
         AddBotMessage(new Message { Text = messageBuilder.ToString() });
     }
@@ -185,7 +200,7 @@ public partial class ChatViewModel : ViewModelBase
 
     private string ShowHelp()
     {
-        return "Here are some things you can ask me:\n- Get shipping rates\n- Check shipment status\n- Print a label\n- Find the cheapest option\n- Find the fastest option";
+        return "Here are some things you can ask me:\n- Get Fastest shipping rates\n- Check shipment status\n- Print a label\n- Find the cheapest option\n- Find the fastest option";
     }
 
     public async Task Play(string message)
@@ -204,7 +219,6 @@ public partial class ChatViewModel : ViewModelBase
     static double ExtractNumber(string input)
     {
         string number = new string(input.Where(char.IsDigit).ToArray());
-
         double.TryParse(number, out double result);
         return result;
     }

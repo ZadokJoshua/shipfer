@@ -25,6 +25,12 @@ public class SupabaseService : ISupabaseService
         return reponse.Model;
     }
 
+    public async Task<IEnumerable<Shipment>> GetShipments()
+    {
+        var response = await _client.From<Shipment>().Get();
+        return response.Models;
+    }
+
     public async Task<AuthResponse> LoginAsync(string email, string password)
     {
         try

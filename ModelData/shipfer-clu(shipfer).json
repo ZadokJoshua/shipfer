@@ -1,0 +1,770 @@
+{
+    "projectFileVersion": "2022-10-01-preview",
+    "stringIndexType": "Utf16CodeUnit",
+    "metadata": {
+        "projectKind": "Conversation",
+        "settings": {
+            "confidenceThreshold": 0,
+            "normalizeCasing": false,
+            "augmentDiacritics": false
+        },
+        "projectName": "shipfer-clu",
+        "multilingual": false,
+        "description": "",
+        "language": "en-us"
+    },
+    "assets": {
+        "projectKind": "Conversation",
+        "intents": [
+            {
+                "category": "None"
+            },
+            {
+                "category": "GetShippingRates"
+            },
+            {
+                "category": "GetFastestOptionShippingRates"
+            }
+        ],
+        "entities": [
+            {
+                "category": "Weight",
+                "compositionSetting": "combineComponents"
+            },
+            {
+                "category": "PostalCode",
+                "compositionSetting": "combineComponents"
+            },
+            {
+                "category": "CountryCode",
+                "compositionSetting": "combineComponents",
+                "regex": {
+                    "expressions": [
+                        {
+                            "regexKey": "Country Code",
+                            "language": "en-us",
+                            "regexPattern": "\\b(US|CA|UK|AU|FR|DE|IN|JP|CN|BR|MX|IT|ES|NL|SE|CH|BE|KR|AT|DK|FI|NO|IE|NZ|PT|GR|PL|CZ|HU|ZA|SG|HK|MY|TH|ID|PH|AE|SA|EG|IL|TR|AR|CL|CO|PE|VE|PK|BD|VN|IR|NG|UA|RO|BG|HR|RS|SI|SK|LV|LT|EE)\\b"
+                        }
+                    ]
+                }
+            },
+            {
+                "category": "Dimensions",
+                "compositionSetting": "combineComponents"
+            },
+            {
+                "category": "DestinationAddress",
+                "compositionSetting": "combineComponents"
+            }
+        ],
+        "utterances": [
+            {
+                "text": "Could you show me the quickest shipping rates for a package to 123 Maple Ave, Unit 5, CA 94105? The dimensions of the package are 16x10x6 and it weighs 2 kg.",
+                "language": "en-us",
+                "intent": "GetFastestOptionShippingRates",
+                "entities": [
+                    {
+                        "category": "DestinationAddress",
+                        "offset": 63,
+                        "length": 21
+                    },
+                    {
+                        "category": "CountryCode",
+                        "offset": 86,
+                        "length": 2
+                    },
+                    {
+                        "category": "PostalCode",
+                        "offset": 89,
+                        "length": 5
+                    },
+                    {
+                        "category": "Dimensions",
+                        "offset": 130,
+                        "length": 7
+                    },
+                    {
+                        "category": "Weight",
+                        "offset": 145,
+                        "length": 8
+                    }
+                ],
+                "dataset": "Test"
+            },
+            {
+                "text": "Provide me with the fastest shipping rates for a package to 789 Oak St, Suite 12, US 10018. The package size is 18x12x8 and it weighs 7 kg.",
+                "language": "en-us",
+                "intent": "GetFastestOptionShippingRates",
+                "entities": [
+                    {
+                        "category": "DestinationAddress",
+                        "offset": 60,
+                        "length": 20
+                    },
+                    {
+                        "category": "CountryCode",
+                        "offset": 82,
+                        "length": 2
+                    },
+                    {
+                        "category": "PostalCode",
+                        "offset": 85,
+                        "length": 5
+                    },
+                    {
+                        "category": "Dimensions",
+                        "offset": 112,
+                        "length": 7
+                    },
+                    {
+                        "category": "Weight",
+                        "offset": 127,
+                        "length": 8
+                    }
+                ],
+                "dataset": "Train"
+            },
+            {
+                "text": "To ship a package to 456 Elm St, Apartment 3, CA 94016, I need the fastest shipping rates. The package dimensions are 14x9x7 and it weighs 3 kg.",
+                "language": "en-us",
+                "intent": "GetFastestOptionShippingRates",
+                "entities": [
+                    {
+                        "category": "DestinationAddress",
+                        "offset": 21,
+                        "length": 23
+                    },
+                    {
+                        "category": "CountryCode",
+                        "offset": 46,
+                        "length": 2
+                    },
+                    {
+                        "category": "PostalCode",
+                        "offset": 49,
+                        "length": 5
+                    },
+                    {
+                        "category": "Dimensions",
+                        "offset": 118,
+                        "length": 6
+                    },
+                    {
+                        "category": "Weight",
+                        "offset": 132,
+                        "length": 8
+                    }
+                ],
+                "dataset": "Train"
+            },
+            {
+                "text": "I need to find the fastest shipping rates for a package to Flat 10, Windsor Apartments, UK 12345 with dimensions 25x20x15 and weight 10 kg.",
+                "intent": "GetFastestOptionShippingRates",
+                "entities": [
+                    {
+                        "category": "DestinationAddress",
+                        "offset": 59,
+                        "length": 27
+                    },
+                    {
+                        "category": "CountryCode",
+                        "offset": 88,
+                        "length": 2
+                    },
+                    {
+                        "category": "PostalCode",
+                        "offset": 91,
+                        "length": 5
+                    },
+                    {
+                        "category": "Dimensions",
+                        "offset": 113,
+                        "length": 8
+                    },
+                    {
+                        "category": "Weight",
+                        "offset": 126,
+                        "length": 9
+                    }
+                ],
+                "dataset": "Train"
+            },
+            {
+                "text": "Can you provide the fastest shipping rates for a package to FR 54321, 1234 Elm St, Apt 5B with dimensions 30x20x10 and weight 6 kg",
+                "intent": "GetFastestOptionShippingRates",
+                "entities": [
+                    {
+                        "category": "CountryCode",
+                        "offset": 60,
+                        "length": 2
+                    },
+                    {
+                        "category": "PostalCode",
+                        "offset": 63,
+                        "length": 5
+                    },
+                    {
+                        "category": "DestinationAddress",
+                        "offset": 70,
+                        "length": 19
+                    },
+                    {
+                        "category": "Dimensions",
+                        "offset": 106,
+                        "length": 8
+                    },
+                    {
+                        "category": "Weight",
+                        "offset": 119,
+                        "length": 8
+                    }
+                ],
+                "dataset": "Train"
+            },
+            {
+                "text": "I need the quickest shipping rates for a package going to Flat 7, Berlin Towers, DE 98765 with dimensions 35x25x15 and weight 8 kg.",
+                "intent": "GetFastestOptionShippingRates",
+                "entities": [
+                    {
+                        "category": "DestinationAddress",
+                        "offset": 58,
+                        "length": 21
+                    },
+                    {
+                        "category": "CountryCode",
+                        "offset": 81,
+                        "length": 2
+                    },
+                    {
+                        "category": "PostalCode",
+                        "offset": 84,
+                        "length": 5
+                    },
+                    {
+                        "category": "Dimensions",
+                        "offset": 106,
+                        "length": 8
+                    },
+                    {
+                        "category": "Weight",
+                        "offset": 119,
+                        "length": 8
+                    }
+                ],
+                "dataset": "Train"
+            },
+            {
+                "text": "Show me the fastest shipping rates for a package to 789 Tokyo Plaza, JP 11111 with dimensions 40x30x20 and weight 12 kg.",
+                "intent": "GetFastestOptionShippingRates",
+                "entities": [
+                    {
+                        "category": "DestinationAddress",
+                        "offset": 52,
+                        "length": 15
+                    },
+                    {
+                        "category": "CountryCode",
+                        "offset": 69,
+                        "length": 2
+                    },
+                    {
+                        "category": "PostalCode",
+                        "offset": 72,
+                        "length": 5
+                    },
+                    {
+                        "category": "Dimensions",
+                        "offset": 94,
+                        "length": 8
+                    },
+                    {
+                        "category": "Weight",
+                        "offset": 107,
+                        "length": 9
+                    }
+                ],
+                "dataset": "Train"
+            },
+            {
+                "text": "What are the quickest shipping rates for a package going to 123 MG Road, Apartment 9, IN 22222 with dimensions 50x40x30 and weight 15 kg?",
+                "intent": "GetFastestOptionShippingRates",
+                "entities": [
+                    {
+                        "category": "DestinationAddress",
+                        "offset": 60,
+                        "length": 24
+                    },
+                    {
+                        "category": "CountryCode",
+                        "offset": 86,
+                        "length": 2
+                    },
+                    {
+                        "category": "PostalCode",
+                        "offset": 89,
+                        "length": 5
+                    },
+                    {
+                        "category": "Dimensions",
+                        "offset": 111,
+                        "length": 8
+                    },
+                    {
+                        "category": "Weight",
+                        "offset": 124,
+                        "length": 9
+                    }
+                ],
+                "dataset": "Train"
+            },
+            {
+                "text": "Get me the fastest shipping rates for a package to 123 Oak St, US 69050 with dimensions 10x5x8 and weight 5 kg.",
+                "intent": "GetFastestOptionShippingRates",
+                "entities": [
+                    {
+                        "category": "DestinationAddress",
+                        "offset": 51,
+                        "length": 10
+                    },
+                    {
+                        "category": "CountryCode",
+                        "offset": 63,
+                        "length": 2
+                    },
+                    {
+                        "category": "PostalCode",
+                        "offset": 66,
+                        "length": 5
+                    },
+                    {
+                        "category": "Dimensions",
+                        "offset": 88,
+                        "length": 6
+                    },
+                    {
+                        "category": "Weight",
+                        "offset": 99,
+                        "length": 8
+                    }
+                ],
+                "dataset": "Test"
+            },
+            {
+                "text": "I need the quickest shipping rates to 456 Maple Ave, CA 90210 for a package with dimensions 15x10x5 and weight 2 kg.",
+                "intent": "GetFastestOptionShippingRates",
+                "entities": [
+                    {
+                        "category": "DestinationAddress",
+                        "offset": 38,
+                        "length": 13
+                    },
+                    {
+                        "category": "CountryCode",
+                        "offset": 53,
+                        "length": 2
+                    },
+                    {
+                        "category": "PostalCode",
+                        "offset": 56,
+                        "length": 5
+                    },
+                    {
+                        "category": "Dimensions",
+                        "offset": 92,
+                        "length": 7
+                    },
+                    {
+                        "category": "Weight",
+                        "offset": 104,
+                        "length": 8
+                    }
+                ],
+                "dataset": "Test"
+            },
+            {
+                "text": "Find the fastest shipping rates for a package going to 789 Elm St, US 10001 with size 20x15x10 and weight 3 kg.",
+                "intent": "GetFastestOptionShippingRates",
+                "entities": [
+                    {
+                        "category": "DestinationAddress",
+                        "offset": 55,
+                        "length": 10
+                    },
+                    {
+                        "category": "CountryCode",
+                        "offset": 67,
+                        "length": 2
+                    },
+                    {
+                        "category": "PostalCode",
+                        "offset": 70,
+                        "length": 5
+                    },
+                    {
+                        "category": "Dimensions",
+                        "offset": 86,
+                        "length": 8
+                    },
+                    {
+                        "category": "Weight",
+                        "offset": 99,
+                        "length": 8
+                    }
+                ],
+                "dataset": "Test"
+            },
+            {
+                "text": "What are the quickest shipping options to ship a package to 321 Pine St, US 30301 with dimensions 5x5x5 and weight 1 kg?",
+                "intent": "GetFastestOptionShippingRates",
+                "entities": [
+                    {
+                        "category": "DestinationAddress",
+                        "offset": 60,
+                        "length": 11
+                    },
+                    {
+                        "category": "CountryCode",
+                        "offset": 73,
+                        "length": 2
+                    },
+                    {
+                        "category": "PostalCode",
+                        "offset": 76,
+                        "length": 5
+                    },
+                    {
+                        "category": "Dimensions",
+                        "offset": 98,
+                        "length": 5
+                    },
+                    {
+                        "category": "Weight",
+                        "offset": 108,
+                        "length": 8
+                    }
+                ],
+                "dataset": "Test"
+            },
+            {
+                "text": "Show me the fastest shipping rates for a package to 789 Cedar Ave, CA 95112 with dimensions 12x8x6 and weight 4 kg.",
+                "intent": "GetFastestOptionShippingRates",
+                "entities": [
+                    {
+                        "category": "DestinationAddress",
+                        "offset": 52,
+                        "length": 13
+                    },
+                    {
+                        "category": "CountryCode",
+                        "offset": 67,
+                        "length": 2
+                    },
+                    {
+                        "category": "PostalCode",
+                        "offset": 70,
+                        "length": 5
+                    },
+                    {
+                        "category": "Dimensions",
+                        "offset": 92,
+                        "length": 6
+                    },
+                    {
+                        "category": "Weight",
+                        "offset": 103,
+                        "length": 8
+                    }
+                ],
+                "dataset": "Test"
+            },
+            {
+                "text": "Get me the fastest shipping rates to 100 Main St, Office 2B, US 10001 with dimensions 10x5x8 and weight 5 kg.",
+                "intent": "GetFastestOptionShippingRates",
+                "entities": [
+                    {
+                        "category": "DestinationAddress",
+                        "offset": 37,
+                        "length": 22
+                    },
+                    {
+                        "category": "CountryCode",
+                        "offset": 61,
+                        "length": 2
+                    },
+                    {
+                        "category": "PostalCode",
+                        "offset": 64,
+                        "length": 5
+                    },
+                    {
+                        "category": "Dimensions",
+                        "offset": 86,
+                        "length": 6
+                    },
+                    {
+                        "category": "Weight",
+                        "offset": 97,
+                        "length": 8
+                    }
+                ],
+                "dataset": "Train"
+            },
+            {
+                "text": "Find the fastest shipping rates for a package going to 456 Market St, US 30301 with size 20x15x10 and weight 3 kg.",
+                "intent": "GetFastestOptionShippingRates",
+                "entities": [
+                    {
+                        "category": "DestinationAddress",
+                        "offset": 55,
+                        "length": 13
+                    },
+                    {
+                        "category": "CountryCode",
+                        "offset": 70,
+                        "length": 2
+                    },
+                    {
+                        "category": "PostalCode",
+                        "offset": 73,
+                        "length": 5
+                    },
+                    {
+                        "category": "Dimensions",
+                        "offset": 89,
+                        "length": 8
+                    },
+                    {
+                        "category": "Weight",
+                        "offset": 102,
+                        "length": 8
+                    }
+                ],
+                "dataset": "Train"
+            },
+            {
+                "text": "What are the quickest shipping options to ship a package to 789 Silicon Blvd, CA 95112 with dimensions 12x8x6 and weight 4 kg?",
+                "intent": "GetFastestOptionShippingRates",
+                "entities": [
+                    {
+                        "category": "DestinationAddress",
+                        "offset": 60,
+                        "length": 16
+                    },
+                    {
+                        "category": "CountryCode",
+                        "offset": 78,
+                        "length": 2
+                    },
+                    {
+                        "category": "PostalCode",
+                        "offset": 81,
+                        "length": 5
+                    },
+                    {
+                        "category": "Dimensions",
+                        "offset": 103,
+                        "length": 6
+                    },
+                    {
+                        "category": "Weight",
+                        "offset": 114,
+                        "length": 8
+                    }
+                ],
+                "dataset": "Train"
+            },
+            {
+                "text": "Show me the fastest shipping rates for a package to 321 Lakeshore Dr, US 60605 with size 10x10x10 and weight 6 kg.",
+                "intent": "GetFastestOptionShippingRates",
+                "entities": [
+                    {
+                        "category": "DestinationAddress",
+                        "offset": 52,
+                        "length": 16
+                    },
+                    {
+                        "category": "CountryCode",
+                        "offset": 70,
+                        "length": 2
+                    },
+                    {
+                        "category": "PostalCode",
+                        "offset": 73,
+                        "length": 5
+                    },
+                    {
+                        "category": "Dimensions",
+                        "offset": 89,
+                        "length": 8
+                    },
+                    {
+                        "category": "Weight",
+                        "offset": 102,
+                        "length": 8
+                    }
+                ],
+                "dataset": "Train"
+            },
+            {
+                "text": "I need fast shipping options for a package to 321 Lakeshore Dr, US 60605 with size 10x10x10 and weight 6 kg.",
+                "intent": "GetFastestOptionShippingRates",
+                "entities": [
+                    {
+                        "category": "DestinationAddress",
+                        "offset": 46,
+                        "length": 16
+                    },
+                    {
+                        "category": "CountryCode",
+                        "offset": 64,
+                        "length": 2
+                    },
+                    {
+                        "category": "PostalCode",
+                        "offset": 67,
+                        "length": 5
+                    },
+                    {
+                        "category": "Dimensions",
+                        "offset": 83,
+                        "length": 8
+                    },
+                    {
+                        "category": "Weight",
+                        "offset": 96,
+                        "length": 8
+                    }
+                ],
+                "dataset": "Train"
+            },
+            {
+                "text": "Give me the fastest shipping rates for a package going to 456 Pine St, CA 94016 with dimensions 14x9x7 and weight 3 kg.",
+                "intent": "GetFastestOptionShippingRates",
+                "entities": [
+                    {
+                        "category": "DestinationAddress",
+                        "offset": 58,
+                        "length": 11
+                    },
+                    {
+                        "category": "CountryCode",
+                        "offset": 71,
+                        "length": 2
+                    },
+                    {
+                        "category": "PostalCode",
+                        "offset": 74,
+                        "length": 5
+                    },
+                    {
+                        "category": "Dimensions",
+                        "offset": 96,
+                        "length": 6
+                    },
+                    {
+                        "category": "Weight",
+                        "offset": 107,
+                        "length": 8
+                    }
+                ],
+                "dataset": "Train"
+            },
+            {
+                "text": "What are the fastest shipping rates for a package to 789 Broadway Ave, US 10018 with size 18x12x8 and weight 7 kg?",
+                "intent": "GetFastestOptionShippingRates",
+                "entities": [
+                    {
+                        "category": "DestinationAddress",
+                        "offset": 53,
+                        "length": 16
+                    },
+                    {
+                        "category": "CountryCode",
+                        "offset": 71,
+                        "length": 2
+                    },
+                    {
+                        "category": "PostalCode",
+                        "offset": 74,
+                        "length": 5
+                    },
+                    {
+                        "category": "Dimensions",
+                        "offset": 90,
+                        "length": 7
+                    },
+                    {
+                        "category": "Weight",
+                        "offset": 102,
+                        "length": 8
+                    }
+                ],
+                "dataset": "Train"
+            },
+            {
+                "text": "Show me the quickest shipping rates for a package to 123 Market St, CA 94105 with dimensions 16x10x6 and weight 2 kg.",
+                "intent": "GetFastestOptionShippingRates",
+                "entities": [
+                    {
+                        "category": "DestinationAddress",
+                        "offset": 53,
+                        "length": 13
+                    },
+                    {
+                        "category": "CountryCode",
+                        "offset": 68,
+                        "length": 2
+                    },
+                    {
+                        "category": "PostalCode",
+                        "offset": 71,
+                        "length": 5
+                    },
+                    {
+                        "category": "Dimensions",
+                        "offset": 93,
+                        "length": 7
+                    },
+                    {
+                        "category": "Weight",
+                        "offset": 105,
+                        "length": 8
+                    }
+                ],
+                "dataset": "Train"
+            },
+            {
+                "text": "I need the fastest shipping rates for a package to 321 Capitol St, US 20001 with dimensions 13x11x9 and weight 5 kg.",
+                "intent": "GetFastestOptionShippingRates",
+                "entities": [
+                    {
+                        "category": "DestinationAddress",
+                        "offset": 51,
+                        "length": 14
+                    },
+                    {
+                        "category": "CountryCode",
+                        "offset": 67,
+                        "length": 2
+                    },
+                    {
+                        "category": "PostalCode",
+                        "offset": 70,
+                        "length": 5
+                    },
+                    {
+                        "category": "Dimensions",
+                        "offset": 92,
+                        "length": 7
+                    },
+                    {
+                        "category": "Weight",
+                        "offset": 104,
+                        "length": 8
+                    }
+                ],
+                "dataset": "Train"
+            }
+        ]
+    }
+}

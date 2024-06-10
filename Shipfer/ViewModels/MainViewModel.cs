@@ -1,7 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Shipfer.Helpers;
+using Shipfer.Models;
+using Shipfer.Services;
 using Shipfer.Views;
+using System.Collections.ObjectModel;
 
 namespace Shipfer.ViewModels;
 
@@ -28,9 +31,15 @@ public partial class MainViewModel : ViewModelBase
     [ObservableProperty]
     private int _numOfPending;
 
+    private readonly ISupabaseService _supabaseService;
+
+    public ObservableCollection<Shipment> PendingShipments = new ObservableCollection<Shipment>();
+    public ObservableCollection<Shipment> DeliveredShipments = new ObservableCollection<Shipment>();
+    
     public MainViewModel()
     {
         GetUserDetails();
+        _supabaseService = new SupabaseService();
     }
 
     private void GetUserDetails()
@@ -44,6 +53,19 @@ public partial class MainViewModel : ViewModelBase
             Country = CountryCodes.GetCountryByCode(userProfile.CountryCode);
             PostalCode = userProfile.Postal;
             Address = userProfile.Address;
+        }
+    }
+
+    private async Task GetAllShipments()
+    {
+        var shipments = await _supabaseService.GetShipments();
+
+        var deliveredShipments = shipments.Where(s => s.IsDelivered);
+        var pendingShipments = shipments.Where(s => s.IsDelivered);
+
+        if (shipments.Count() > 0)
+        {
+            
         }
     }
 

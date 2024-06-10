@@ -1,6 +1,9 @@
-﻿namespace Shipfer.Services;
+﻿using Shipfer.Models;
+
+namespace Shipfer.Services;
 
 public interface IShipping360Service
 {
-    Task<object> GenerateAuthToken();
+    Task GenerateAccessToken();
+    Task<RatesResponse> GetRates(RateRequest rateRequest);
 }

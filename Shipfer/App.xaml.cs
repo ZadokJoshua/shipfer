@@ -7,11 +7,14 @@ namespace Shipfer;
 
 public partial class App : Application
 {
+    private readonly IShipping360Service _shipping360Service;
     public App()
     {
         InitializeComponent();
 
-        // PreferenceHelper.ClearUserDetails();
+        //PreferenceHelper.ClearUserDetails();
+        _shipping360Service = new Shipping360Service();
+        GenerateToken();
 
         var userDetails = PreferenceHelper.GetUserDetails();
         var session = userDetails.session;
@@ -24,5 +27,11 @@ public partial class App : Application
         {
             MainPage = new AuthPage();
         }
+    }
+
+    private async Task GenerateToken()
+    {
+
+        await _shipping360Service.GenerateAccessToken();
     }
 }

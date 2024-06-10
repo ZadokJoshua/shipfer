@@ -9,5 +9,6 @@ public interface ISupabaseService
     Task<AuthResponse> LoginAsync(string email, string password);
     Task CreateProfile(Profile profile);
     Task<Profile> GetProfile(string profileId);
+    Task<IEnumerable<Shipment>> GetShipments();
 
 }

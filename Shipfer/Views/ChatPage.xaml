@@ -73,7 +73,7 @@
         </HorizontalStackLayout>
 
         <!--  Main Content Area  -->
-        <VerticalStackLayout
+        <!--<VerticalStackLayout
             Grid.Row="1"
             HorizontalOptions="Center"
             IsVisible="False"
@@ -113,12 +113,11 @@
                 HeightRequest="50"
                 Text="🧾 Confirm print label"
                 TextColor="{DynamicResource SecondaryColour}" />
-        </VerticalStackLayout>
+        </VerticalStackLayout>-->
 
         <!--  Chat Area  -->
         <ScrollView
             Grid.Row="1"
-            IsVisible="True"
             VerticalScrollBarVisibility="Default">
             <CollectionView ItemsSource="{x:Binding Messages}">
                 <CollectionView.ItemsLayout>
@@ -163,7 +162,8 @@
                 HeightRequest="50"
                 HorizontalOptions="Center"
                 TextColor="{x:DynamicResource TertiaryColour}"
-                VerticalOptions="Center">
+                VerticalOptions="Center"
+                Command="{x:Binding SendMessageCommand}">
                 <Button.ImageSource>
                     <FontImageSource FontFamily="FASolid" Glyph="{x:Static fa:Solid.ArrowRight}" />
                 </Button.ImageSource>

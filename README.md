@@ -46,4 +46,4 @@ Our future plans include integrating Shipfer with leading online marketplaces li
 - [Zadok Joshua](https://github.com/ZadokJoshua/)
 
 ## Resources 
-[Here's the link to our presentation](https://github.com/ZadokJoshua/shipfer/blob/main/Documents/Shipfer-Presentation-Slides-Alt.pdf)
+Here's the link to our [presentation slides](Documents/shipfer-presentation-slides.pdf) and [video](https://drive.google.com/file/d/19zWrZeGmFy8_zjKggG1EuSeiVn60yjoj/view?usp=sharing)

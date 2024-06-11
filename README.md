@@ -2,24 +2,16 @@
 
 <b>Shipfer</b> is a project designed to revolutionize the shipping process for small businesses and online sellers. By utilizing AI solutions and real-time data integration from the Pitney Bowes Shipping 360 API, Shipfer aims to create a seamless and efficient shipping experience. Our platform provides users with carrier rates suggestions, ensuring that every shipment is cost-effective, and easily managed. Shipfer is not just an app; it’s a comprehensive solution to streamline logistics, reduce costs, and enhance customer satisfaction, making the complexities of shipping simple and accessible for everyone.
 
-<Mock up image>
+
+
 
 ## Technical Implementation
-### Tools and Programming Languages
-- C# 
-- Visual Studio 2022
-- PyCharm
-### Backend
-- Python
-- Fast API
-
-### Frontend
-- .NET MAUI
-- MVVM Community Toolkit
-- Uranium UI
+### Tools and Technologies used
+C#, Visual Studio 2022, PyCharm, Python, Fast API, .NET MAUI, MVVM Community Toolkit, Uranium UI.
 
 ### Services
 - Azure AI Bot Service
+- AI Language Service
 - Supabase
 - Text to Speech
 - Speech to Text
